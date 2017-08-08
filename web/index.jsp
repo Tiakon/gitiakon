@@ -20,43 +20,72 @@
     <link rel="icon" href="<%=homePath%>/picture/favicon.ico">
     <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet">
     <link href="<%=homePath%>/css/signin.css" rel="stylesheet">
-    <script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
-    <script src="<%=homePath%>/js/bootstrap.js"></script>
-    <script src="<%=homePath%>/js/utils.js"></script>
+    <script src="<%=homePath%>/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script src="<%=homePath%>/js/bootstrap.js" type="text/javascript"></script>
+    <script src="<%=homePath%>/js/utils.js" type="text/javascript"></script>
 
 </head>
 <body>
 <div class="container">
-
-    <form action="<%=homePath%>/LoginServlet" id="form-signin" class="form-signin" method="post">
+    <form action="<%=homePath%>/LoginServlet" onsubmit="javascript:return VerifyLogin();" class="form-signin"
+          method="post">
         <h2 class="form-signin-heading">Tiakon博客系统</h2>
-        <label for="inputUserName" class="sr-only">用户名</label>
-        <input type="text" id="inputUserName" name="username" class="form-control" placeholder="用户名">
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="密码">
+
+        <div class="form-group">
+            <label for="inputUserName" class="sr-only">用户名</label>
+            <input type="text" id="inputUserName" name="username" class="form-control" value="${user.userName}" placeholder="用户名">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">密码</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" value="${user.password}" placeholder="密码">
+        </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> 记住 我
+                <input type="checkbox" value="remember-me"> 记住我
+                <p style="display: inline-block; color: #a94442;padding-left: 46px;">${error==null?"":error}</p>
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" onclick="javascript:return VerifyLogin();" type="submit">登 录
-        </button>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
     </form>
 </div>
+
 </body>
 </html>
 <script>
-    var inputUserName = document.getElementById("inputUserName");
-    var inputPassword = document.getElementById("inputPassword");
-
     function VerifyLogin() {
+
+        var inputUserName = document.getElementById("inputUserName");
+        var inputPassword = document.getElementById("inputPassword");
+        var form_group = document.getElementsByClassName("form-group");
+
         var username = trim(inputUserName.value);
         var password = trim(inputPassword.value);
 
-        if (username.length != 0 && password.length != 0) {
-            return true;
+        if (username.length == 0) {
+            form_group[0].className="form-group has-error";
+            var username_label = form_group[0].firstElementChild;
+            username_label.className="control-label";
+            username_label.innerHTML="用户名不能为空";
+            return false;
+        }else{
+            form_group[0].className="form-group";
+            var username_label = form_group[0].firstElementChild;
+            username_label.className="sr-only";
+            username_label.innerHTML="用户名";
         }
-        alert("用户名或密码不能为空！");
-        return false;
+        if (password.length == 0) {
+            form_group[1].className="form-group has-error";
+            var username_label = form_group[1].firstElementChild;
+            username_label.className="control-label";
+            username_label.innerHTML="密码不能为空";
+            return false;
+        }else{
+            form_group[1].className="form-group";
+            var username_label = form_group[1].firstElementChild;
+            username_label.className="sr-only";
+            username_label.innerHTML="密码";
+        }
+        return true;
     }
 </script>
