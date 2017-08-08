@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -23,6 +24,7 @@ public class LoginServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String username = request.getParameter("username").trim();
         String password = request.getParameter("password").trim();
+        HttpSession session = request.getSession();
         //System.out.println(username);
         //System.out.println(password);
         User user = new User();
@@ -35,10 +37,14 @@ public class LoginServlet extends HttpServlet {
         } catch (Exception e) {
             new RuntimeException(e.getMessage());
         }
-        if (resultSetUser != null) {
-            System.out.println("登陆成功");
-        } else {
+        if (resultSetUser == null) {
             System.out.println("登录失败");
+            session.setAttribute("user", user);
+            session.setAttribute("error", "用户名或密码错误");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else {
+            session.setAttribute("currentUser", resultSetUser);
+            response.sendRedirect("main.jsp");
         }
 
     }
