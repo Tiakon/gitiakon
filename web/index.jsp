@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.tiakon.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: Hoictas
   Date: 2017/8/8
@@ -7,6 +7,33 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String homePath = request.getContextPath();%>
+<%
+    if (request.getAttribute("user") == null) {
+        String userName = null;
+        String password = null;
+
+        Cookie[] cookies = request.getCookies();
+        if (cookies.length != 0) {
+            for (int i = 0; i < cookies.length; i++) {
+                if ("user".equals(cookies[i].getName())) {
+                    String[] users = cookies[i].getValue().split("-");
+                    userName = users[0];
+                    password = users[1];
+                }
+            }
+        }
+        if (userName == null) {
+            userName = "";
+        }
+        if (password == null) {
+            password = "";
+        }
+        User user = new User();
+        user.setUserName(userName);
+        user.setPassword(password);
+        pageContext.setAttribute("user", user);
+    }
+%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -33,16 +60,18 @@
 
         <div class="form-group">
             <label for="inputUserName" class="sr-only">用户名</label>
-            <input type="text" id="inputUserName" name="username" class="form-control" value="${user.userName}" placeholder="用户名">
+            <input type="text" id="inputUserName" name="username" class="form-control" value="${user.userName}"
+                   placeholder="用户名">
         </div>
         <div class="form-group">
             <label for="inputPassword" class="sr-only">密码</label>
-            <input type="password" id="inputPassword" name="password" class="form-control" value="${user.password}" placeholder="密码">
+            <input type="password" id="inputPassword" name="password" class="form-control" value="${user.password}"
+                   placeholder="密码">
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> 记住我
-                <p style="display: inline-block; color: #a94442;padding-left: 46px;">${error==null?"":error}</p>
+                <input type="checkbox" name="remember" value="remember-me"> 记住我
+                <p id="error" style="display: inline-block; color: #a94442;padding-left: 46px;">${error==null?"":error}</p>
             </label>
         </div>
 
@@ -57,35 +86,37 @@
 
         var inputUserName = document.getElementById("inputUserName");
         var inputPassword = document.getElementById("inputPassword");
+        var error = document.getElementById("error");
         var form_group = document.getElementsByClassName("form-group");
 
         var username = trim(inputUserName.value);
         var password = trim(inputPassword.value);
 
         if (username.length == 0) {
-            form_group[0].className="form-group has-error";
+            form_group[0].className = "form-group has-error";
             var username_label = form_group[0].firstElementChild;
-            username_label.className="control-label";
-            username_label.innerHTML="用户名不能为空";
+            username_label.className = "control-label";
+            username_label.innerHTML = "用户名不能为空";
             return false;
-        }else{
-            form_group[0].className="form-group";
+        } else {
+            form_group[0].className = "form-group";
             var username_label = form_group[0].firstElementChild;
-            username_label.className="sr-only";
-            username_label.innerHTML="用户名";
+            username_label.className = "sr-only";
+            username_label.innerHTML = "用户名";
         }
         if (password.length == 0) {
-            form_group[1].className="form-group has-error";
+            form_group[1].className = "form-group has-error";
             var username_label = form_group[1].firstElementChild;
-            username_label.className="control-label";
-            username_label.innerHTML="密码不能为空";
+            username_label.className = "control-label";
+            username_label.innerHTML = "密码不能为空";
             return false;
-        }else{
-            form_group[1].className="form-group";
+        } else {
+            form_group[1].className = "form-group";
             var username_label = form_group[1].firstElementChild;
-            username_label.className="sr-only";
-            username_label.innerHTML="密码";
+            username_label.className = "sr-only";
+            username_label.innerHTML = "密码";
         }
+        error.style.display="none";
         return true;
     }
 </script>
