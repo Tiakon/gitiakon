@@ -1,9 +1,8 @@
-package com.tiakon.junit;
-
 import com.tiakon.entity.User;
 import com.tiakon.service.UserService;
 import com.tiakon.service.impl.UserServiceImpl;
 import com.tiakon.utils.JDBCUtil;
+import com.tiakon.utils.MD5Util;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -31,5 +30,14 @@ public class Junit5 {
             e.printStackTrace();
         }
         System.out.println();
+    }
+    @Test
+    void testMD5Util(){
+        try {
+            String encoderStrByMD5 = MD5Util.getEncoderStrByMD5("123");
+            System.out.println(encoderStrByMD5);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
