@@ -4,8 +4,9 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -15,4 +16,23 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.tiakon.servlet.LoginServlet</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/MainServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.tiakon.servlet.MainServlet</servlet-class>
+    </servlet>
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.tiakon.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>
