@@ -12,10 +12,9 @@ public class JDBCUtil {
 
     static {
         try {
-            prop.load(JDBCUtil.class
-                    .getResourceAsStream("/com/tiakon/conf/jdbc.properties"));
+
             // 加载驱动
-            Class.forName(prop.getProperty("driverClassName"));
+            Class.forName(PropertiesUtil.getValue("driverClassName"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -25,9 +24,9 @@ public class JDBCUtil {
         Connection conn = null;
 
         try {
-            conn = DriverManager.getConnection(prop.getProperty("url"),
-                    prop.getProperty("user"), prop.getProperty("password"));
-        } catch (SQLException e) {
+            conn = DriverManager.getConnection(PropertiesUtil.getValue("url"),
+                    PropertiesUtil.getValue("user"),PropertiesUtil.getValue("password"));
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
         return conn;
