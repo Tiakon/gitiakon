@@ -1,4 +1,4 @@
-<%@ page import="com.tiakon.entity.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Hoictas
   Date: 2017/8/8
@@ -6,14 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String homePath = request.getContextPath();%>
+<%@ page import="com.tiakon.entity.User" %>
+<%@include file="publicVariables.jsp" %>
 <%
+    System.out.println("login.jsp");
+
+
     if (request.getAttribute("user") == null) {
         String userName = null;
         String password = null;
 
         Cookie[] cookies = request.getCookies();
-        if (cookies.length != 0) {
+        if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
                 if ("user".equals(cookies[i].getName())) {
                     String[] users = cookies[i].getValue().split("-");
@@ -50,7 +54,6 @@
     <script src="<%=homePath%>/js/jquery-3.1.0.min.js" type="text/javascript"></script>
     <script src="<%=homePath%>/js/bootstrap.js" type="text/javascript"></script>
     <script src="<%=homePath%>/js/utils.js" type="text/javascript"></script>
-
 </head>
 <body>
 <div class="container">
@@ -71,7 +74,8 @@
         <div class="checkbox">
             <label>
                 <input type="checkbox" name="remember" value="remember-me"> 记住我
-                <p id="error" style="display: inline-block; color: #a94442;padding-left: 46px;">${error==null?"":error}</p>
+                <p id="error"
+                   style="display: inline-block; color: #a94442;padding-left: 46px;">${error==null?"":error}</p>
             </label>
         </div>
 
@@ -116,7 +120,7 @@
             username_label.className = "sr-only";
             username_label.innerHTML = "密码";
         }
-        error.style.display="none";
+        error.style.display = "none";
         return true;
     }
 </script>
