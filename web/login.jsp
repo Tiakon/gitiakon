@@ -9,9 +9,9 @@
 <%@ page import="com.tiakon.entity.User" %>
 <%@include file="publicVariables.jsp" %>
 <%
-    System.out.println("login.jsp");
+    System.out.println("**************login.jsp");
 
-
+    //检查客户端是否有cookie信息，有则显示在文本框中
     if (request.getAttribute("user") == null) {
         String userName = null;
         String password = null;
@@ -48,9 +48,10 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>Tiakon's blog</title>
     <!-- Bootstrap -->
-    <link rel="icon" href="<%=homePath%>/picture/favicon.ico">
-    <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet">
-    <link href="<%=homePath%>/css/signin.css" rel="stylesheet">
+    <link href="<%=homePath%>/picture/favicon.ico" rel="icon">
+    <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="<%=homePath%>/css/signin.css" rel="stylesheet" type="text/css">
+    <link href="<%=homePath%>/css/checked.min.css" rel='stylesheet' type='text/css'/>
     <script src="<%=homePath%>/js/jquery-3.1.0.min.js" type="text/javascript"></script>
     <script src="<%=homePath%>/js/bootstrap.js" type="text/javascript"></script>
     <script src="<%=homePath%>/js/utils.js" type="text/javascript"></script>
@@ -73,7 +74,7 @@
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" name="remember" value="remember-me"> 记住我
+                <input type="checkbox" class="checked-boom" name="remember" value="remember-me"> 记住我
                 <p id="error"
                    style="display: inline-block; color: #a94442;padding-left: 46px;">${error==null?"":error}</p>
             </label>

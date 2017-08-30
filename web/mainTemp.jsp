@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="publicVariables.jsp" %>
-<%System.out.println("mainTemp.jsp");%>
+<%System.out.println("**************mainTemp.jsp");%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -23,30 +23,12 @@
     <title>Taikon's Blog</title>
     <!-- Bootstrap core CSS -->
     <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-        .container-fluid {
-            margin: 0% 5%;
-        }
+    <link href="<%=homePath%>/css/diaryStyle.css" rel="stylesheet">
 
-        .data_list {
-            border: 1px solid #E5E5E5;
-            padding: 10px;
-            background-color: #FDFDFD;
-            margin-top: 15px;
-        }
-
-        .data_list .data_list_title {
-            font-size: 15px;
-            font-weight: bold;
-            border-bottom: 1px solid #E5E5E5;
-            padding-bottom: 10px;
-            padding-top: 5px;
-        }
-
-        .data_list .data_list_title img {
-            vertical-align: top;
-        }
-    </style>
+    <script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
+    <script src="<%=homePath%>/js/bootstrap.min.js"></script>
+    <script src="<%=homePath%>/js/ckeditor/ckeditor.js"></script>
+    <script src="<%=homePath%>/js/utils.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -54,14 +36,23 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Taikon's Blog</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="#"><i class="glyphicon glyphicon-home"></i>&nbsp;主页 </a>
+                    <a href="/MainServlet?flag=searchAll">
+                        <i class="glyphicon glyphicon-home"></i>&nbsp;主页
+                    </a>
                 </li>
-                <li><a href="#"><i class="glyphicon glyphicon-pencil"></i>&nbsp;写博客</a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-book"></i>&nbsp;日记分类管理</a></li>
+                <li>
+                    <a href="/ShowServlet?action=presave">
+                        <i class="glyphicon glyphicon-pencil"></i>&nbsp;写博客
+                    </a>
+                </li>
+                <li>
+                    <a href="/DiaryTypeServlet?action=list">
+                        <i class="glyphicon glyphicon-book"></i>&nbsp;文章分类管理
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="glyphicon glyphicon-user"></i>个人中心
@@ -79,9 +70,9 @@
                 </li>
             </ul>
 
-            <form class="navbar-form navbar-left">
+            <form action="/MainServlet?flag=searchAll" class="navbar-form navbar-left" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="搜索博文">
+                    <input type="text" name="search" class="form-control" placeholder="搜索博文">
                 </div>
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
@@ -101,43 +92,133 @@
                     </ul>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>
 
 <div class="container-fluid" style="margin-top: 80px;">
+    <c:choose>
+        <c:when test="${flag=='success'}">
+            <div class="row" id="success">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 alert alert-success alert-dismissible text-center" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong><c:out value="${message}"/></strong>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </c:when>
+        <c:when test="${flag=='failure'}">
+            <div class="row" id="failure">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 alert alert-danger alert-dismissible text-center" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>${message}</strong>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </c:when>
+    </c:choose>
     <div class="row">
-        <div class="col-xs-12 col-md-8">
-
-            <jsp:include page="${mainPage==null?'mainPageIsNull.jsp':mainPage}"></jsp:include>
-            <%--<jsp:include page=""></jsp:include>--%>
+        <div class="col-md-1"></div>
+        <div class="col-xs-12 col-md-7">
+            <jsp:include page="${mainPage==null?'mainPageIsNull.jsp':mainPage}" flush="true"></jsp:include>
         </div>
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-3">
             <div class="data_list">
                 <div class="data_list_title">
-                    <img src="${pageContext.request.contextPath}/picture/mainTemp/user_icon.png"/>
+                    <img src="<%=homePath%>/picture/mainTemp/user_icon.png"/>
                     个人中心
                 </div>
-            </div>
-
-            <div class="data_list">
-                <div class="data_list_title">
-                    <img src="${pageContext.request.contextPath}/picture/mainTemp/byType_icon.png"/>
-                    按日志类别
+                <div class="user_content">
+                    <img src="${currentUser.imageName}" alt="${currentUser.nickName}的头像"/>
+                    <div class="user_nickName">${currentUser.nickName}</div>
+                    <div class="user_mood">(${currentUser.mood})</div>
                 </div>
             </div>
-
             <div class="data_list">
                 <div class="data_list_title">
-                    <img src="${pageContext.request.contextPath}/picture/mainTemp/list_icon.png"/>
-                    日记列表
+                    <img src="<%=homePath%>/picture/mainTemp/byType_icon.png"/>
+                    按文章类别
+                </div>
+                <div class="data_list_content">
+                    <ul>
+                        <c:forEach var="diaryType" items="${diaryTypeCountList}">
+                            <li>
+                                <a href="/MainServlet?diaryTypeIDParam=${diaryType.diaryTypeID}"><span>${diaryType.typeName}</span>(${diaryType.diaryTypeCount})</a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>
+                    文章列表
+                </div>
+                <div class="data_list_content">
+                    <ul>
+                        <c:forEach var="diaryDate" items="${diaryDateList}">
+                            <li>
+                                <a href="/MainServlet?diaryDateParam=${diaryDate.release_dateStr}"><span>${diaryDate.release_dateStr}</span>(${diaryDate.diaryDateCount})</a>
+                            </li>
+                        </c:forEach>
+                    </ul>
                 </div>
             </div>
         </div>
+        <div class="col-md-1"></div>
+
     </div>
 </div>
 
-<script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
-<script src="<%=homePath%>/js/bootstrap.min.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+    //限时关闭操作提示信息
+    function AutoCloseInfo() {
+        var success = document.getElementById('success');
+        var failure = document.getElementById('failure');
+
+        if (success != null || failure != null) {
+            setTimeout("success.style.display='none';", 3000);
+        }
+    }
+
+    function VerifySave() {
+
+        var titleInput = document.getElementById('titleInput');
+        var content = CKEDITOR.instances.contentInput.getData();
+        var typeIdInput = document.getElementById('typeIdInput');
+        var error = document.getElementById('error');
+
+        var title = trim(titleInput.value);
+
+        if (title.length == 0) {
+            error.innerHTML = '标题不能为空';
+            return false;
+        }
+        if (content.length == 0) {
+            error.innerHTML = '内容不能为空';
+            return false;
+        }
+        if (typeIdInput.value == '-1') {
+            error.innerHTML = '文章类别不能为空';
+            return false;
+        }
+        return true;
+    }
+
+    function VerifyDelete(diaryIdParam) {
+        if (confirm("你确定删除这篇文章？")) {
+            window.location.href = '/ShowServlet?action=delete&diaryIdParam=' + diaryIdParam;
+        }
+    }
+
+    AutoCloseInfo();
+
+</script>
