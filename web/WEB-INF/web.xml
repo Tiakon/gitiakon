@@ -27,6 +27,26 @@
         <servlet-class>com.tiakon.servlet.MainServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>ShowServlet</servlet-name>
+        <url-pattern>/ShowServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowServlet</servlet-name>
+        <servlet-class>com.tiakon.servlet.ShowServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DiaryTypeServlet</servlet-name>
+        <url-pattern>/DiaryTypeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DiaryTypeServlet</servlet-name>
+        <servlet-class>com.tiakon.servlet.DiaryTypeServlet</servlet-class>
+    </servlet>
+
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>com.tiakon.filter.LoginFilter</filter-class>
