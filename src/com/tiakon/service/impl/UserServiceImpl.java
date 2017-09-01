@@ -6,6 +6,7 @@ import com.tiakon.entity.User;
 import com.tiakon.service.UserService;
 import com.tiakon.utils.JDBCUtil;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -23,10 +24,25 @@ public class UserServiceImpl implements UserService {
             connection.setAutoCommit(false);
             resultSetUser = userDao.login(connection, user);
             connection.commit();
+        } catch (Exception e) {
+            connection.rollback();
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(null, null, connection);
+        }
+        return resultSetUser;
+    }
+
+    @Override
+    public User showUser(User currentUser) throws SQLException, IOException {
+        try {
+            connection.setAutoCommit(false);
+            resultSetUser = userDao.showUser(connection, currentUser);
+            connection.commit();
         } catch (SQLException e) {
             connection.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             JDBCUtil.close(null, null, connection);
         }
         return resultSetUser;
