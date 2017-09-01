@@ -1,9 +1,11 @@
 package com.tiakon.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Hoictas on 2017/8/8.
  */
-public class User {
+public class User implements Serializable {
     private int userId;
     private String userName;
     private String password;
