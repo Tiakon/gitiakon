@@ -3,6 +3,7 @@ package com.tiakon.servlet;
 import com.tiakon.entity.User;
 import com.tiakon.service.UserService;
 import com.tiakon.service.impl.UserServiceImpl;
+import com.tiakon.utils.StringUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -19,13 +20,19 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        System.out.println("LoginServlet.java");
+        System.out.println("**************LoginServlet.java");
         User resultSetUser;
         HttpSession session = request.getSession();
         try {
-            String username = request.getParameter("username").trim();
-            String password = request.getParameter("password").trim();
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
             String remember = request.getParameter("remember");
+            if (StringUtil.isEmpty(username) || StringUtil.isEmpty(password)) {
+                response.sendRedirect("/login.jsp");
+                return;
+            }
+            username.trim();
+            password.trim();
             //System.out.println("remember-me:" + remember);
             User user = new User();
             user.setUserName(username);
@@ -49,12 +56,7 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
         } catch (Exception e) {
-            new RuntimeException(e);
-        }finally {
-            //在浏览器上直接输入/LoginServlet变白页，所以在这里添加处理。
-            response.sendRedirect("/login.jsp");
-            return;
-
+            e.printStackTrace();
         }
 
     }
