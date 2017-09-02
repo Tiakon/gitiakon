@@ -10,7 +10,6 @@ import java.io.IOException;
 /**
  * Created by Hoictas on 2017/8/10.
  */
-@WebFilter(filterName = "LoginFilter")
 public class LoginFilter implements Filter {
     public void destroy() {
     }
