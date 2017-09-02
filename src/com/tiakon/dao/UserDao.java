@@ -12,6 +12,7 @@ import java.sql.SQLException;
 public interface UserDao {
     User login(Connection connection, User user) throws Exception;
 
-    User showUser(Connection connection,User currentUser) throws SQLException, IOException;
+    User userPreSave(Connection connection,User currentUser) throws SQLException, IOException;
 
+    boolean userSave(Connection connection, User modUser) throws SQLException;
 }

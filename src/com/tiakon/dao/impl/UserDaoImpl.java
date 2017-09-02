@@ -20,6 +20,8 @@ public class UserDaoImpl implements UserDao {
     private ResultSet resultSet = null;
     private User resultSetUser = null;
 
+    private boolean flag = false;
+
     @Override
     public User login(Connection connection, User user) throws Exception {
         try {
@@ -45,7 +47,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User showUser(Connection connection, User currentUser) throws SQLException, IOException {
+    public User userPreSave(Connection connection, User currentUser) throws SQLException, IOException {
         try {
             String sql = "SELECT * FROM t_user WHERE user_id=?";
 
@@ -65,5 +67,27 @@ public class UserDaoImpl implements UserDao {
             JDBCUtil.close(resultSet, preparedStatement, null);
         }
         return resultSetUser;
+    }
+
+    @Override
+    public boolean userSave(Connection connection, User modUser) throws SQLException {
+        try {
+
+            String sql = "UPDATE t_user SET nickname=?,imagename=?,mood=? WHERE user_id=?";
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, modUser.getNickName());
+            preparedStatement.setString(2, modUser.getImageName());
+            preparedStatement.setString(3, modUser.getMood());
+            preparedStatement.setInt(4, modUser.getUserId());
+            int lineNumber = preparedStatement.executeUpdate();
+
+            if (lineNumber > 0) {
+                flag = true;
+            }
+        } finally {
+            JDBCUtil.close(resultSet, preparedStatement, null);
+        }
+        return flag;
     }
 }
