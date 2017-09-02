@@ -18,6 +18,8 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDaoImpl();
     private User resultSetUser = null;
 
+    private boolean flag = false;
+
     @Override
     public User login(User user) throws SQLException {
         try {
@@ -34,10 +36,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User showUser(User currentUser) throws SQLException, IOException {
+    public User userPreSave(User currentUser) throws SQLException, IOException {
         try {
             connection.setAutoCommit(false);
-            resultSetUser = userDao.showUser(connection, currentUser);
+            resultSetUser = userDao.userPreSave(connection, currentUser);
             connection.commit();
         } catch (SQLException e) {
             connection.rollback();
@@ -46,5 +48,20 @@ public class UserServiceImpl implements UserService {
             JDBCUtil.close(null, null, connection);
         }
         return resultSetUser;
+    }
+
+    @Override
+    public boolean userSave(User modUser) throws SQLException {
+        try {
+            connection.setAutoCommit(false);
+            flag = userDao.userSave(connection, modUser);
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(null, null, connection);
+        }
+        return flag;
     }
 }

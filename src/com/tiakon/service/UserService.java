@@ -11,5 +11,7 @@ import java.sql.SQLException;
 public interface UserService {
     User login(User user) throws SQLException;
 
-    User showUser(User currentUser) throws SQLException, IOException;
+    User userPreSave(User currentUser) throws SQLException, IOException;
+
+    boolean userSave(User modUser) throws SQLException;
 }
