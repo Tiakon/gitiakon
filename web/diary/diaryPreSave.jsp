@@ -32,7 +32,7 @@
         </c:choose>
     </div>
     <div>
-        <form action="/ShowServlet?action=save" method="post" onsubmit="javascript:return VerifySave()">
+        <form role="form" action="/ShowServlet?action=save" method="post" onsubmit="javascript:return VerifySave()">
             <input type="hidden" value="${diary.diaryId}" name="diaryIdInput">
             <div class="input-group">
                 <span class="input-group-addon">标题</span>
@@ -47,16 +47,16 @@
             <div class="diary_type">
                 <select name="diaryTypeIdInput" id="typeIdInput">
                     <option value="-1">请选择文章类别...</option>
-                    <c:forEach var="diaryType" items="${diaryTypeList}">
+                    <c:forEach var="diaryType" items="${diaryTypeCountList}">
                         <option value="${diaryType.diaryTypeID}" ${diaryType.diaryTypeID==diary.typeId?"selected":""}>${diaryType.typeName}</option>
                     </c:forEach>
                 </select>
             </div>
 
             <div class="diary_button">
-                <button type="submit" class="btn btn-primary" >保存</button>
-                <button type="button" class="btn btn-primary"
-                        onclick="javascript:window.location.href='/MainServlet?flag=searchAll'">返回
+                <button type="submit" class="btn btn-primary btn-sm">&nbsp;保存&nbsp;</button>
+                <button type="button" class="btn btn-default btn-sm"
+                        onclick="javascript:window.location.href='/MainServlet?flag=searchAll'">&nbsp;返回&nbsp;
                 </button>
                 <p id="error"
                    style="display: inline-block; color: #ce4f4d;padding-left: 46px;">${error==null?"":error}</p>

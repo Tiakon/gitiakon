@@ -36,9 +36,15 @@
             ${diary.content}
         </div>
         <div class="diary_action">
-            <button type="button" class="btn btn-primary" onclick="javascript:window.location.href='/ShowServlet?action=update&diaryIdParam=${diary.diaryId}'">修改文章</button>
-            <button type="button" class="btn btn-primary" onclick="javascript:window.location.href='/MainServlet?flag=searchAll'">返回</button>
-            <button type="button" class="btn btn-danger" onclick="VerifyDelete(${diary.diaryId})">删除文章</button>
+            <button type="button" class="btn btn-primary"
+                    onclick="javascript:window.location.href='/ShowServlet?action=update&diaryIdParam=${diary.diaryId}'">
+                &nbsp;修改文章&nbsp;
+            </button>&nbsp;
+            <button type="button" class="btn btn-default"
+                    onclick="javascript:window.location.href='/MainServlet?flag=searchAll'">&nbsp;返回&nbsp;
+            </button>&nbsp;
+            <button type="button" class="btn btn-danger" onclick="VerifyDelete(${diary.diaryId})">&nbsp;删除文章&nbsp;
+            </button>
         </div>
     </div>
 
