@@ -22,7 +22,7 @@
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel0">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <form action="/DiaryTypeServlet?action=save" method="post">
+                    <form role="form" action="/DiaryTypeServlet?action=save" method="post">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
@@ -52,7 +52,7 @@
                 <th style="width: 60%">类别名称</th>
                 <th>操作</th>
             </tr>
-            <c:forEach var="diaryType" items="${diaryTypeList}">
+            <c:forEach var="diaryType" items="${diaryTypeCountList}">
                 <tr>
                     <td><%=++index%>
                     </td>
@@ -66,7 +66,7 @@
                              aria-labelledby="myLargeModalLabel">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
-                                    <form action="/DiaryTypeServlet?action=save" method="post">
+                                    <form role="form" action="/DiaryTypeServlet?action=save" method="post">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                                     aria-hidden="true">&times;</span></button>

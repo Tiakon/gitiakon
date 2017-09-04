@@ -32,7 +32,7 @@
         </c:choose>
     </div>
     <div>
-        <form action="/ShowServlet?action=save" method="post" onsubmit="javascript:return VerifySave()">
+        <form role="form" action="/ShowServlet?action=save" method="post" onsubmit="javascript:return VerifySave()">
             <input type="hidden" value="${diary.diaryId}" name="diaryIdInput">
             <div class="input-group">
                 <span class="input-group-addon">标题</span>
