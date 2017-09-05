@@ -57,9 +57,9 @@
     <script src="<%=homePath%>/js/utils.js" type="text/javascript"></script>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <form action="<%=homePath%>/LoginServlet" onsubmit="javascript:return VerifyLogin();" class="form-signin"
-          method="post">
+          method="post" role="form">
         <h2 class="form-signin-heading">Tiakon博客系统</h2>
 
         <div class="form-group">

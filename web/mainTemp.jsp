@@ -30,78 +30,133 @@
     <script src="<%=homePath%>/js/ckeditor/ckeditor.js"></script>
     <script src="<%=homePath%>/js/utils.js"></script>
 </head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<body style="background-color: #EBEBEB">
+<%--当桌面像素大于992px时导航栏处使用此显示方案--%>
+<nav class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Taikon's Blog</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="/MainServlet?flag=searchAll">
-                        <i class="glyphicon glyphicon-home"></i>&nbsp;主页
-                    </a>
-                </li>
-                <li>
-                    <a href="/ShowServlet?action=presave">
-                        <i class="glyphicon glyphicon-pencil"></i>&nbsp;写博客
-                    </a>
-                </li>
-                <li>
-                    <a href="/DiaryTypeServlet?action=list">
-                        <i class="glyphicon glyphicon-book"></i>&nbsp;文章分类管理
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        <i class="glyphicon glyphicon-user"></i>个人中心
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
+        <div class="row">
+            <div class="navbar-header col-md-1.5">
+                <a class="navbar-brand" href="#">Taikon's Blog</a>
+            </div>
+            <div class="collapse navbar-collapse col-md-10.5">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/MainServlet?flag=searchAll">
+                            <i class="glyphicon glyphicon-home"></i>&nbsp;主页
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ShowServlet?action=presave">
+                            <i class="glyphicon glyphicon-pencil"></i>&nbsp;写博客
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/DiaryTypeServlet?action=list">
+                            <i class="glyphicon glyphicon-book"></i>&nbsp;文章分类管理
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="glyphicon glyphicon-user"></i>个人中心
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/UserServlet?action=presave">用户信息</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-            <form action="/MainServlet?flag=searchAll" class="navbar-form navbar-left" method="post">
-                <div class="form-group">
-                    <input type="text" name="search" class="form-control" placeholder="搜索博文">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
+                <form action="/MainServlet?flag=searchAll" class="navbar-form navbar-left" method="post" role="form">
+                    <div class="form-group">
+                        <input type="search" name="search" style="font-style: italic;" class="form-control"
+                               placeholder="搜索博文...">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </form>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">关于</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">下拉菜单
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">关于</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">下拉菜单
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
+
+<%--当桌面像素小于992px时导航栏处使用此显示方案--%>
+<div class="mobile-menu-area hidden-md hidden-lg">
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid  text-center">
+            <div class="navbar-title">
+                <a href="#" class="">Tiakon's Blog</a>
+            </div>
+            <form action="/MainServlet?flag=searchAll" method="post" class="navbar-form" role="search">
+                <div class="form-group center-block">
+                    <input type="search" name="search" style="font-style: italic;" class="form-control"
+                           placeholder="搜索博文...">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title pull-left">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                <i class="glyphicon glyphicon-menu-hamburger" style="font-size: 25px;"
+                                   aria-hidden="true"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                         aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="row">
+                                <ul class="nav nav-tabs text-center">
+                                    <li class="col-xs-12 col-sm-12" role="presentation"><a
+                                            href="/MainServlet?flag=searchAll">主页</a></li>
+                                    <li class="col-xs-12 col-sm-12" role="presentation"><a
+                                            href="/ShowServlet?action=presave">写博客</a></li>
+                                    <li class="col-xs-12 col-sm-12" role="presentation"><a
+                                            href="/DiaryTypeServlet?action=list">文章分类管理</a></li>
+                                    <li class="col-xs-12 col-sm-12" role="presentation"><a
+                                            href="/UserServlet?action=presave">用户信息</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
 
 <div class="container-fluid" style="margin-top: 80px;">
     <c:choose>
         <c:when test="${flag=='success'}">
             <div class="row" id="success">
                 <div class="col-md-1"></div>
-                <div class="col-md-10 alert alert-success alert-dismissible text-center" role="alert">
+                <div class="col-xs-12 col-md-10 alert alert-success alert-dismissible text-center" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -113,7 +168,7 @@
         <c:when test="${flag=='failure'}">
             <div class="row" id="failure">
                 <div class="col-md-1"></div>
-                <div class="col-md-10 alert alert-danger alert-dismissible text-center" role="alert">
+                <div class="col-xs-12 col-md-10 alert alert-danger alert-dismissible text-center" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -172,12 +227,12 @@
             </div>
         </div>
         <div class="col-md-1"></div>
-
     </div>
 </div>
 
 </body>
 </html>
+
 <script type="text/javascript">
     //限时关闭操作提示信息
     function AutoCloseInfo() {
