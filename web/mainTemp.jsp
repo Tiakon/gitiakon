@@ -154,7 +154,7 @@
 <div class="container-fluid" style="margin-top: 80px;">
     <c:choose>
         <c:when test="${flag=='success'}">
-            <div class="row" id="success">
+            <div class="row row-mod" id="success">
                 <div class="col-md-1"></div>
                 <div class="col-xs-12 col-md-10 alert alert-success alert-dismissible text-center" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -166,7 +166,7 @@
             </div>
         </c:when>
         <c:when test="${flag=='failure'}">
-            <div class="row" id="failure">
+            <div class="row row-mod" id="failure">
                 <div class="col-md-1"></div>
                 <div class="col-xs-12 col-md-10 alert alert-danger alert-dismissible text-center" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -178,6 +178,11 @@
             </div>
         </c:when>
     </c:choose>
+    <div class="row row-mod">
+        <div class="col-md-1"></div>
+        <div id="userError" class="col-xs-12 col-md-10 alert alert-danger text-center user-error" role="alert">昵称或心情不能为空！</div>
+        <div class="col-md-1"></div>
+    </div>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-xs-12 col-md-7">
