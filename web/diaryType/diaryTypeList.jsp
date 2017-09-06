@@ -22,7 +22,8 @@
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel0">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <form role="form" action="/DiaryTypeServlet?action=save" method="post">
+                    <form role="form" action="/DiaryTypeServlet?action=save" method="post"
+                          onsubmit="javascript:return VerifyForm('diaryTypeName','diayTypeError');">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
@@ -35,6 +36,7 @@
                                        placeholder="请输入类别名称" aria-describedby="sizing-addon1">
                             </div>
                         </div>
+                        <div id="diayTypeError" class="text-center text-danger diayTypeError">类别名称不能为空</div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">保存</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -45,7 +47,6 @@
         </div>
     </div>
     <div class="panel panel-default">
-
         <table class="table table-hover">
             <tr>
                 <th>编号</th>
@@ -66,7 +67,8 @@
                              aria-labelledby="myLargeModalLabel">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
-                                    <form role="form" action="/DiaryTypeServlet?action=save" method="post">
+                                    <form role="form" action="/DiaryTypeServlet?action=save" method="post"
+                                          onsubmit="javascript:return VerifyForm('diaryTypeNameUpdate<%=index%>','diayTypeError<%=index%>')">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                                     aria-hidden="true">&times;</span></button>
@@ -74,13 +76,16 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="input-group">
-                                                <input id="diaryTypeIdUpdate" value="${diaryType.diaryTypeID}"
+                                                <input id="diaryTypeIdUpdate<%=index%>" value="${diaryType.diaryTypeID}"
                                                        name="diaryTypeIdUpdate" type="hidden">
                                                 <span class="input-group-addon" id="sizing-addon2">类别名称</span>
-                                                <input id="diaryTypeNameUpdate" name="diaryTypeNameUpdate" type="text"
+                                                <input id="diaryTypeNameUpdate<%=index%>" name="diaryTypeNameUpdate" type="text"
                                                        class="form-control" value="${diaryType.typeName}"
                                                        placeholder="请输入类别名称" aria-describedby="sizing-addon2">
                                             </div>
+                                        </div>
+                                        <div id="diayTypeError<%=index%>" class="text-center text-danger diayTypeError">
+                                            类别名称不能为空
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary">保存</button>
@@ -111,5 +116,19 @@
         } else {
             alert("该类别下有文章无法删除!");
         }
+    }
+
+    function VerifyForm(InputID, errorID) {
+        var InputID = document.getElementById(InputID);
+        var InputIDTrim = trim(InputID.value);
+
+        if (InputIDTrim.length == 0) {
+            var diayTypeError = document.getElementById(errorID);
+            diayTypeError.style.display = "block";
+            setTimeout("diayTypeError.style.display = 'none';", 3000);
+            return false;
+        }
+
+        return true;
     }
 </script>
