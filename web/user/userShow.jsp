@@ -18,23 +18,25 @@
     <div class="container-fluid" style="margin-top: 25px;">
         <div class="row">
             <div class="col-xs-12 col-md-4">
-                <img src="${currentUser.imageName}" style="width: 100%;" class="img-circle" alt="${currentUser.userName}的头像">
+                <img src="${currentUser.imageName}" style="width: 100%;" class="img-circle"
+                     alt="${currentUser.userName}的头像">
             </div>
             <div class="col-xs-12 col-md-8">
-                <form action="UserServlet?action=save" enctype="multipart/form-data" role="form" method="post">
+                <form action="UserServlet?action=save" enctype="multipart/form-data" role="form" method="post"
+                      onsubmit="javascript:return VerifyFormUpdate()">
                     <div class="form-group">
                         <label for="exampleInputFile">选择头像</label>
                         <input type="file" id="exampleInputFile" name="uploadFileInput">
                         <p class="help-block">这里可添加帮助文本</p>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">昵称</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" value="${currentUser.nickName}"
+                        <label for="nickNameInput">昵称</label>
+                        <input id="nickNameInput" type="text" class="form-control" value="${currentUser.nickName}"
                                placeholder="请输入你的昵称" name="nickNameInput">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">心情</label>
-                        <textarea name="moodTextArea" class="form-control" id="exampleInputPassword1"
+                        <label for="moodTextArea">心情</label>
+                        <textarea name="moodTextArea" class="form-control" id="moodTextArea"
                                   cols="30" rows="10"
                                   placeholder="请输入你的心情">${currentUser.mood}</textarea>
                     </div>
@@ -44,3 +46,19 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function VerifyFormUpdate() {
+        var nickNameInput = document.getElementById('nickNameInput');
+        var moodTextArea = document.getElementById('moodTextArea');
+        var nickNameInputTrim = trim(nickNameInput.value);
+        var moodTextAreaTrim = trim(moodTextArea.value);
+
+        if (nickNameInputTrim.length == 0 || moodTextAreaTrim == 0) {
+            var userError = document.getElementById('userError');
+            userError.style.display = "block";
+            setTimeout("userError.style.display = 'none';", 3000);
+            return false;
+        }
+        return true;
+    }
+</script>
