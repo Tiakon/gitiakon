@@ -108,6 +108,18 @@
 
 }
 
+.diayTypeError {
+    display: none;
+    margin-bottom: 5px;
+}
+.user-error{
+    display: none;
+}
+.row-mod{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 @media screen and (max-width: 992px) {
 
     .navbar-title {
@@ -148,7 +160,8 @@
         color: #337ab7;
         background-color: #F5F5F5;
     }
-    .panel-heading{
+
+    .panel-heading {
         height: 45px;
     }
 
