@@ -1,4 +1,13 @@
 
+body {
+    background-color: #EBEBEB;
+    font-family: "Helvetica Neue",
+    Helvetica, Arial, "Hiragino Sans GB",
+    "Hiragino Sans GB W3", "WenQuanYi Micro Hei",
+    "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+
+}
+
 .data_list {
     border: 1px solid #E5E5E5;
     padding: 10px;
@@ -47,16 +56,21 @@
 }
 
 .data_list .diary_title {
-    text-align: center;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
 .data_list .diary_info {
+    font-size: 14px;
     text-align: center;
-    font-weight: bold;
+    margin-bottom: 20px;
+    color: #999;
 }
 
 .data_list .diary_content {
-
+    font-size: 16px;
+    color: #505050;
+    line-height: 1.75em;
 }
 
 .data_list .diary_content img {
@@ -125,6 +139,21 @@
     margin-left: 0px;
 }
 
+.caret-mod {
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    border: 10px solid rgba(255, 0, 0, 0);
+    border-top-width: 0px;
+    border-bottom-color: #ffffff;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -8px;
+    margin-left: -32px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 
 @media screen and (max-width: 992px) {
 
