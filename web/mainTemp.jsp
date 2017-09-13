@@ -30,7 +30,7 @@
     <script src="<%=homePath%>/js/ckeditor/ckeditor.js"></script>
     <script src="<%=homePath%>/js/utils.js"></script>
 </head>
-<body style="background-color: #EBEBEB">
+<body>
 <%--当桌面像素大于992px时导航栏处使用此显示方案--%>
 <nav class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
     <div class="container-fluid container-fluid-mod">
@@ -69,6 +69,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
+                            <i class="caret caret-mod"></i>
                             <li><a href="#">扩展功能1</a></li>
                             <li><a href="#">扩展功能2</a></li>
                             <li><a href="#">扩展功能3</a></li>
@@ -87,7 +88,9 @@
                            role="button"><i class="glyphicon glyphicon-user"></i>&nbsp;个人中心
                             <span class="caret"></span>
                         </a>
+
                         <ul class="dropdown-menu">
+                            <i class="caret caret-mod"></i>
                             <li><a href="/UserServlet?action=presave">用户信息</a></li>
                             <li><a href="#">其它功能1</a></li>
                             <li><a href="#">其它功能2</a></li>
@@ -153,6 +156,7 @@
     </nav>
 </div>
 
+<%--博客内容--%>
 <div class="container-fluid" style="margin-top: 80px;">
     <c:choose>
         <c:when test="${flag=='success'}">
@@ -238,6 +242,7 @@
         <div class="col-md-1"></div>
     </div>
 </div>
+
 
 </body>
 </html>
