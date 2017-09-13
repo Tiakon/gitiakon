@@ -33,69 +33,71 @@
 <body style="background-color: #EBEBEB">
 <%--当桌面像素大于992px时导航栏处使用此显示方案--%>
 <nav class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-header col-md-1.5">
-                <a class="navbar-brand" href="#">Taikon's Blog</a>
+    <div class="container-fluid container-fluid-mod">
+        <div class="row row-mod">
+            <div class="col-md-1"></div>
+            <div class="col-md-1.5">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/MainServlet?flag=searchAll" style="color: aliceblue;">Taikon's
+                        Blog</a>
+                </div>
             </div>
-            <div class="collapse navbar-collapse col-md-10.5">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/MainServlet?flag=searchAll">
-                            <i class="glyphicon glyphicon-home"></i>&nbsp;主页
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/ShowServlet?action=presave">
-                            <i class="glyphicon glyphicon-pencil"></i>&nbsp;写博客
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/DiaryTypeServlet?action=list">
-                            <i class="glyphicon glyphicon-book"></i>&nbsp;文章分类管理
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <i class="glyphicon glyphicon-user"></i>个人中心
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/UserServlet?action=presave">用户信息</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <form action="/MainServlet?flag=searchAll" class="navbar-form navbar-left" method="post" role="form">
+            <div class="col-md-1.5 navbar-form navbar-left">
+                <form action="/MainServlet?flag=searchAll" method="post"
+                      role="form">
                     <div class="form-group">
                         <input type="search" name="search" style="font-style: italic;" class="form-control"
                                placeholder="搜索博文...">
                     </div>
-                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </form>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">关于</a></li>
+            </div>
+            <div class="col-md-3 col-lg-offset-2 collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/ShowServlet?action=presave">
+                            <i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑文章
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/DiaryTypeServlet?action=list">
+                            <i class="glyphicon glyphicon-book"></i>&nbsp;类别管理
+                        </a>
+                    </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">下拉菜单
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            &nbsp;<i class="glyphicon glyphicon-plus"></i>扩展功能
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">扩展功能1</a></li>
+                            <li><a href="#">扩展功能2</a></li>
+                            <li><a href="#">扩展功能3</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">扩展功能4</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">扩展功能5</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
+            <div class="col-md-1 col-lg-offset-1 col-md-offset-1 collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button"><i class="glyphicon glyphicon-user"></i>&nbsp;个人中心
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/UserServlet?action=presave">用户信息</a></li>
+                            <li><a href="#">其它功能1</a></li>
+                            <li><a href="#">其它功能2</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">安全退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 </nav>
@@ -180,7 +182,9 @@
     </c:choose>
     <div class="row row-mod">
         <div class="col-md-1"></div>
-        <div id="userError" class="col-xs-12 col-md-10 alert alert-danger text-center user-error" role="alert">昵称或心情不能为空！</div>
+        <div id="userError" class="col-xs-12 col-md-10 alert alert-danger text-center user-error" role="alert">
+            昵称或心情不能为空！
+        </div>
         <div class="col-md-1"></div>
     </div>
     <div class="row">
