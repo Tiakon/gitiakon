@@ -1,6 +1,3 @@
-.container-fluid {
-
-}
 
 .data_list {
     border: 1px solid #E5E5E5;
@@ -112,13 +109,22 @@
     display: none;
     margin-bottom: 5px;
 }
-.user-error{
+
+.user-error {
     display: none;
 }
-.row-mod{
+
+.container-fluid-mod {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+.row-mod {
     margin-right: 0px;
     margin-left: 0px;
 }
+
 
 @media screen and (max-width: 992px) {
 
