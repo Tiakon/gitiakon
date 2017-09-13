@@ -21,15 +21,15 @@
 <div class="data_list">
     <div class="data_list_title">
         <img src="<%=homePath%>/picture/mainTemp/diary_show_icon.png"/>
-        文章信息
+        阅读文章
     </div>
     <div>
         <div class="diary_title">
             <h2>${diary.title}</h2>
         </div>
-        <div class="diary_info">发布时间:
-            『<fmt:formatDate value="${diary.release_date}" type="date"
-                             pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>』
+        <div class="diary_info">
+            <fmt:formatDate value="${diary.release_date}" type="date"
+                            pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
             &nbsp;&nbsp;文章类别:${diary.typeName}
         </div>
         <div class="diary_content">
