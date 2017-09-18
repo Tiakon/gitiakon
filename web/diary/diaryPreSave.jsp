@@ -27,7 +27,7 @@
             </c:when>
             <c:otherwise>
                 <img src="<%=homePath%>/picture/mainTemp/diary_add_icon.png"/>
-                写文章
+                编辑文章
             </c:otherwise>
         </c:choose>
     </div>
