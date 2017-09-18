@@ -71,6 +71,7 @@ public class ShowServlet extends HttpServlet {
                 request.setAttribute("diary", diary);
                 request.setAttribute("mainPage", "/diary/diaryPreSave.jsp");
                 request.getRequestDispatcher("mainTemp.jsp").forward(request, response);
+                return;
             }
         } catch (SQLException e) {
             e.printStackTrace();

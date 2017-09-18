@@ -38,6 +38,8 @@ public class UserServlet extends HttpServlet {
             userPreSave(request, response);
         } else if ("save".equals(action)) {
             userSave(request, response);
+        } else if ("safeExit".equals(action)) {
+            userSafeExit(request, response);
         }
     }
 
@@ -118,6 +120,22 @@ public class UserServlet extends HttpServlet {
             request.getRequestDispatcher("/mainTemp.jsp").forward(request, response);
 
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void userSafeExit(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        Object user = session.getAttribute("currentUser");
+
+        if (user != null) {
+            System.out.println("currentUser:" + user);
+            session.removeAttribute("currentUser");
+        }
+        try {
+            response.sendRedirect("/login.jsp");
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
