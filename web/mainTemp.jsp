@@ -38,7 +38,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-1.5">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/MainServlet?flag=searchAll" style="color: aliceblue;">Taikon's
+                    <a class="navbar-brand activate" href="/MainServlet?flag=searchAll" >Taikon's
                         Blog</a>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                             <li><a href="#">其它功能1</a></li>
                             <li><a href="#">其它功能2</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">安全退出</a></li>
+                            <li><a href="/UserServlet?action=safeExit">安全退出</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -243,7 +243,14 @@
     </div>
 </div>
 
-
+<%--博客页脚--%>
+<div class="footer text-center">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">&copy;Copy Tiakon版权所有</div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
 </body>
 </html>
 
