@@ -38,7 +38,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-1.5">
                 <div class="navbar-header">
-                    <a class="navbar-brand activate" href="/MainServlet?flag=searchAll" >Taikon's
+                    <a class="navbar-brand activate" href="/MainServlet?flag=searchAll">Taikon's
                         Blog</a>
                 </div>
             </div>
@@ -247,7 +247,7 @@
 <div class="footer text-center">
     <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10">&copy;Copy Tiakon版权所有</div>
+        <div class="col-lg-10">Copyright &copy; 2017 Powered by Tiakon</div>
         <div class="col-lg-1"></div>
     </div>
 </div>
