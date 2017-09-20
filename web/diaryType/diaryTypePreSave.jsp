@@ -18,8 +18,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
 <% System.out.println("**************diaryTypePreSave.jsp"); %>
-<div class="data_list">
-    <div class="data_list_title">
+<div class="data-list">
+    <div class="data-list-title">
         <c:choose>
             <c:when test="${diary.diaryId!=null}">
                 <img src="<%=homePath%>/picture/mainTemp/diary_type_edit_icon.png"/>
@@ -40,11 +40,11 @@
                        placeholder="请添加标题">
             </div>
 
-            <div class="diary_content">
+            <div class="data-content">
                 <textarea id="contentInput" name="contentInput" class="ckeditor">${diary.content}</textarea>
             </div>
 
-            <div class="diary_type">
+            <div class="data-type">
                 <select name="diaryTypeIdInput" id="typeIdInput">
                     <option value="-1">请选择文章类别...</option>
                     <c:forEach var="diaryType" items="${diaryTypeList}">
