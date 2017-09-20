@@ -23,7 +23,8 @@
     <title>Taikon's Blog</title>
     <!-- Bootstrap core CSS -->
     <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet">
-    <link href="<%=homePath%>/css/diaryStyle.css" rel="stylesheet">
+    <!-- blog core CSS -->
+    <link href="<%=homePath%>/css/blog.css" rel="stylesheet">
 
     <script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
     <script src="<%=homePath%>/js/bootstrap.min.js"></script>
@@ -31,14 +32,14 @@
     <script src="<%=homePath%>/js/utils.js"></script>
 </head>
 <body>
-<%--当桌面像素大于992px时导航栏处使用此显示方案--%>
+<%--当桌面像素大于992px时,导航栏处使用此显示方案--%>
 <nav class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
-    <div class="container-fluid container-fluid-mod">
+    <div class="container-fluid container-fluid-mod-1">
         <div class="row row-mod">
             <div class="col-md-1"></div>
             <div class="col-md-1.5">
                 <div class="navbar-header">
-                    <a class="navbar-brand activate" href="/MainServlet?flag=searchAll">Taikon's
+                    <a class="navbar-brand activate " href="/MainServlet?flag=searchAll" style="color: #ffffff;">Tiakon's
                         Blog</a>
                 </div>
             </div>
@@ -60,7 +61,7 @@
                     </li>
                     <li>
                         <a href="/DiaryTypeServlet?action=list">
-                            <i class="glyphicon glyphicon-book"></i>&nbsp;类别管理
+                            <i class="glyphicon glyphicon-tag"></i>&nbsp;标签管理
                         </a>
                     </li>
                     <li class="dropdown">
@@ -105,12 +106,12 @@
     </div>
 </nav>
 
-<%--当桌面像素小于992px时导航栏处使用此显示方案--%>
+<%--当桌面像素小于992px时,导航栏处使用此显示方案--%>
 <div class="mobile-menu-area hidden-md hidden-lg">
     <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid  text-center">
             <div class="navbar-title">
-                <a href="#" class="">Tiakon's Blog</a>
+                <a href="#" class="logo-style">Tiakon's Blog</a>
             </div>
             <form action="/MainServlet?flag=searchAll" method="post" class="navbar-form" role="search">
                 <div class="form-group center-block">
@@ -142,7 +143,7 @@
                                     <li class="col-xs-12 col-sm-12" role="presentation"><a
                                             href="/ShowServlet?action=presave">写博客</a></li>
                                     <li class="col-xs-12 col-sm-12" role="presentation"><a
-                                            href="/DiaryTypeServlet?action=list">文章分类管理</a></li>
+                                            href="/DiaryTypeServlet?action=list">标签管理</a></li>
                                     <li class="col-xs-12 col-sm-12" role="presentation"><a
                                             href="/UserServlet?action=presave">用户信息</a>
                                     </li>
@@ -157,7 +158,7 @@
 </div>
 
 <%--博客内容--%>
-<div class="container-fluid" style="margin-top: 80px;">
+<div class="container-fluid container-fluid-mod-2">
     <c:choose>
         <c:when test="${flag=='success'}">
             <div class="row row-mod" id="success">
@@ -197,42 +198,46 @@
             <jsp:include page="${mainPage==null?'mainPageIsNull.jsp':mainPage}" flush="true"></jsp:include>
         </div>
         <div class="col-xs-12 col-md-3">
-            <div class="data_list">
-                <div class="data_list_title">
-                    <img src="<%=homePath%>/picture/mainTemp/user_icon.png"/>
-                    个人中心
-                </div>
-                <div class="user_content">
-                    <img src="${currentUser.imageName}" alt="${currentUser.nickName}的头像"/>
-                    <div class="user_nickName">${currentUser.nickName}</div>
-                    <div class="user_mood">(${currentUser.mood})</div>
+            <%--个人信息展示板--%>
+            <div class="data-list">
+                <%--<div class="data-list-title">--%>
+                <%--<img src="<%=homePath%>/picture/mainTemp/user_icon.png"/>--%>
+                <%--<sapn class="glyphicon glyphicon-user"></sapn>&nbsp;个人中心--%>
+                <%--</div>--%>
+                <div class="user-content">
+                    <img class="img-rounded" src="${currentUser.imageName}" alt="${currentUser.nickName}的头像"/>
+                    <div class="user-nickName">${currentUser.nickName}</div>
+                    <div class="user-mood">${currentUser.mood}</div>
                 </div>
             </div>
-            <div class="data_list">
-                <div class="data_list_title">
-                    <img src="<%=homePath%>/picture/mainTemp/byType_icon.png"/>
-                    按文章类别
+            <%--按照日期查看文章--%>
+            <div class="data-list">
+                <div class="data-list-title">
+                    <%--<img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>--%>
+                    <span class="glyphicon glyphicon-calendar"></span>&nbsp;时间列表
                 </div>
-                <div class="data_list_content">
+                <div class="data-datas-content">
                     <ul>
-                        <c:forEach var="diaryType" items="${diaryTypeCountList}">
+                        <c:forEach var="diaryDate" items="${diaryDateList}">
                             <li>
-                                <a href="/MainServlet?diaryTypeIDParam=${diaryType.diaryTypeID}"><span>${diaryType.typeName}</span>(${diaryType.diaryTypeCount})</a>
+                                <a href="/MainServlet?diaryDateParam=${diaryDate.release_dateStr}"><span>${diaryDate.release_dateStr}</span>(${diaryDate.diaryDateCount})</a>
                             </li>
                         </c:forEach>
                     </ul>
                 </div>
             </div>
-            <div class="data_list">
-                <div class="data_list_title">
-                    <img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>
-                    文章列表
+            <%--按照标签查看文章--%>
+            <div class="tags-box">
+                <div class="tags-title">
+                    <%--<img src="<%=homePath%>/picture/mainTemp/byType_icon.png"/>--%>
+                    <sapn class="glyphicon glyphicon-tags"></sapn>&nbsp;便签云
                 </div>
-                <div class="data_list_content">
+                <div class="tags-content">
                     <ul>
-                        <c:forEach var="diaryDate" items="${diaryDateList}">
+                        <c:forEach var="diaryType" items="${diaryTypeCountList}">
                             <li>
-                                <a href="/MainServlet?diaryDateParam=${diaryDate.release_dateStr}"><span>${diaryDate.release_dateStr}</span>(${diaryDate.diaryDateCount})</a>
+                                <a href="/MainServlet?diaryTypeIDParam=${diaryType.diaryTypeID}">${diaryType.typeName}<span
+                                        class="badge">${diaryType.diaryTypeCount}</span></a>
                             </li>
                         </c:forEach>
                     </ul>
