@@ -20,7 +20,7 @@ public class LoginFilter implements Filter {
         HttpSession session = request.getSession();
         String servletPath = request.getServletPath();
         Object user = session.getAttribute("currentUser");
-        System.out.println("请求的servletPath:" + servletPath);
+
         //System.out.println(servletPath.indexOf("login.jsp"));
        /*
                1.以下资源被请求时不拦截。
@@ -36,6 +36,9 @@ public class LoginFilter implements Filter {
             response.sendRedirect("/login.jsp");
             return;
         } else {
+            System.out.print("是否已登录:");
+            System.out.println(user != null);
+            System.out.println("请求的servletPath:" + servletPath);
             chain.doFilter(servletReq, servletResponse);
         }
     }
