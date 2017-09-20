@@ -10,12 +10,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
 <% System.out.println("**************userShow.jsp"); %>
-<div class="data_list">
-    <div class="data_list_title">
-        <img src="<%=homePath%>/picture/mainTemp/user_edit_icon.png"/>
+<div class="data-list">
+    <div class="data-list-title">
+        <%--<img src="<%=homePath%>/picture/mainTemp/user_edit_icon.png"/>--%>
+        <sapn class="glyphicon glyphicon-edit"></sapn>
         用户信息
     </div>
-    <div class="container-fluid" style="margin-top: 25px;">
+    <div class="container-fluid container-fluid-mod-3">
         <div class="row">
             <div class="col-xs-12 col-md-4">
                 <img src="${currentUser.imageName}" style="width: 100%;" class="img-circle"
