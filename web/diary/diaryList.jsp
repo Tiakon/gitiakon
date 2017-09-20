@@ -10,20 +10,26 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
 <% System.out.println("**************diaryList.jsp"); %>
-<div class="data_list">
-    <div class="data_list_title">
-        <img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>
+<div class="article-box">
+    <div class="article-box-title">
+        <%--<img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>--%>
+        <span class="glyphicon glyphicon-th-list"></span>
         文章列表
     </div>
-    <div class="diary_datas">
-        <ul>
+    <div class="article-box-content">
+        <table class="table table-striped">
             <c:forEach var="diary" items="${diaryList}">
-                <li>
-                    『<fmt:formatDate value="${diary.release_date}" type="date" pattern="yyyy-MM-dd"></fmt:formatDate>』
-                    <span>&nbsp;&nbsp;&nbsp;<a href="/ShowServlet?action=show&diaryIdParam=${diary.diaryId}">${diary.title}</a></span>
-                </li>
+                <tr>
+                    <td style="width: 25%;">
+                        <fmt:formatDate value="${diary.release_date}" type="date"
+                                        pattern="yyyy-MM-dd"></fmt:formatDate>
+                    </td>
+                    <td>
+                        <a href="/ShowServlet?action=show&diaryIdParam=${diary.diaryId}">${diary.title}</a>
+                    </td>
+                </tr>
             </c:forEach>
-        </ul>
+        </table>
     </div>
     <nav class="text-center">
         <ul class="pagination">
