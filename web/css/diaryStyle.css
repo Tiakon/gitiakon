@@ -124,18 +124,6 @@ body {
     margin-bottom: 5px;
 }
 
-.footer {
-    margin-top: 50px;
-    background-color: #f1f1f1;
-    height: 80px;
-    border-top: 1px solid #f1f1f1;
-}
-
-.footer .row {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
 .user-error {
     display: none;
 }
@@ -170,6 +158,18 @@ activate {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+
+.navbar-static-bottom {
+    height: 150px;
+    z-index: 1000;
+    margin-top: 50px;
+    background-color: #f1f1f1;
+    padding-top: 60px;
+}
+
+/*
+    本系统采用两套显示方案，当设备大于992px和小于992px。
+*/
 
 @media screen and (max-width: 992px) {
 
@@ -214,6 +214,15 @@ activate {
 
     .panel-heading {
         height: 45px;
+    }
+
+    .navbar-static-bottom {
+        height: 150px;
+        z-index: 1000;
+        margin-top: 50px;
+        background-color: #f1f1f1;
+        padding-top: 60px;
+        text-align: center;
     }
 
 }
