@@ -253,7 +253,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-1 col-md-1"></div>
-            <div class="col-md-2 col-lg-2">京ICP备16054569号</div>
+            <div class="col-md-2 col-lg-2">备案号:京ICP备16054569号</div>
             <div class="col-md-offset-2 col-md-4 col-lg-offset-2 col-lg-4">Copyright &copy; 2017 Powered by Tiakon</div>
             <div class="col-lg-1"></div>
         </div>
