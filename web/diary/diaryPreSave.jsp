@@ -40,8 +40,14 @@
                        placeholder="请添加标题">
             </div>
 
-            <div class="data-content">
+            <%--<div class="data-content">
                 <textarea id="contentInput" name="contentInput" class="ckeditor">${diary.content}</textarea>
+            </div>--%>
+
+            <div id="my-editormd">
+                <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
+                <!-- 注意：name属性的值-->
+                <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
             </div>
 
             <div class="data-type">
