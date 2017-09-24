@@ -3,3 +3,7 @@
 2. User information display, modification, head upload
 3. The CRUD of the article
 4. The system is prepared to display two sets of devices, supporting the display of mobile (<992px) and PC(>992px)
+
+## Test: ##
+username: **Tiakon**<br>
+password: **123**<br>
