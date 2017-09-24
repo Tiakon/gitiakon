@@ -30,6 +30,10 @@
     <script src="<%=homePath%>/js/bootstrap.min.js"></script>
     <script src="<%=homePath%>/js/ckeditor/ckeditor.js"></script>
     <script src="<%=homePath%>/js/utils.js"></script>
+
+    <link rel="stylesheet" href="./js/editor.md/css/editormd.css"/>
+    <script src="./js/editor.md/js/editormd.js"></script>
+
 </head>
 <body>
 <%--当桌面像素大于992px时,导航栏处使用此显示方案--%>
@@ -304,5 +308,27 @@
     }
 
     AutoCloseInfo();
+
+    function init() {
+        var testEditor = editormd("my-editormd", {//注意1：这里的就是上面的DIV的id属性值
+            width: "100%",
+            height: 640,
+            /*            theme : "dark",
+             previewTheme : "dark",
+             editorTheme : "pastel-on-dark",*/
+            syncScrolling: "single",
+            path: "./js/editor.md/lib/",//注意2：你的路径
+            saveHTMLToTextarea: true,//注意3：这个配置，方便post提交表单
+            emoji: true,//emoji表情，默认关闭
+
+            /**上传图片相关配置如下*/
+            /*imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "http://192.168.0.100:18202" //注意你后端的上传图片服务地址
+            */
+        });
+//        testEditor.fullscreen();
+    }
+    init();
 
 </script>
