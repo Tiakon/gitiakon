@@ -5,7 +5,7 @@
   Time: 23:43
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="publicVariables.jsp" %>
 <%System.out.println("**************mainTemp.jsp");%>
@@ -18,24 +18,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
-    <meta name="author" content="Taikon">
+    <meta name="author" content="Tiakon">
     <link rel="icon" href="<%=homePath%>/picture/favicon.ico">
     <title>Taikon's Blog</title>
     <!-- Bootstrap core CSS -->
     <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet">
-    <!-- blog core CSS -->
+    <!-- Blog core CSS -->
     <link href="<%=homePath%>/css/blog.css" rel="stylesheet">
-
+    <!--jquery-->
     <script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
+    <!--bootstrap-->
     <script src="<%=homePath%>/js/bootstrap.min.js"></script>
-    <script src="<%=homePath%>/js/ckeditor/ckeditor.js"></script>
+    <!--Js Tool File-->
     <script src="<%=homePath%>/js/utils.js"></script>
-
-    <link rel="stylesheet" href="./js/editor.md/css/editormd.css"/>
-    <script src="./js/editor.md/js/editormd.js"></script>
-
+    <!--editor.md plugins -->
+    <link href="<%=homePath%>/js/editor.md/css/editormd.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=homePath%>/js/editor.md/css/editormd.preview.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+
 <%--当桌面像素大于992px时,导航栏处使用此显示方案--%>
 <nav class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
     <div class="container-fluid container-fluid-mod-1">
@@ -209,7 +210,7 @@
                 <%--<sapn class="glyphicon glyphicon-user"></sapn>&nbsp;个人中心--%>
                 <%--</div>--%>
                 <div class="user-content">
-                    <img class="img-rounded" src="${currentUser.imageName}" alt="${currentUser.nickName}的头像"/>
+                    <img class="img-rounded" style="width: 100%;" src="${currentUser.imageName}" alt="${currentUser.nickName}的头像"/>
                     <div class="user-nickName">${currentUser.nickName}</div>
                     <div class="user-mood">${currentUser.mood}</div>
                 </div>
@@ -263,72 +264,18 @@
         </div>
     </div>
 </div>
+
+<script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/lib/marked.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/lib/prettify.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/lib/raphael.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/lib/underscore.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/lib/sequence-diagram.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/lib/flowchart.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/lib/jquery.flowchart.min.js"></script>
+<script src="<%=homePath%>/js/editor.md/js/editormd.js"></script>
+
+<script src="<%=homePath%>/js/mainTemp.js" type="text/javascript"></script>
+
 </body>
 </html>
-
-<script type="text/javascript">
-    //限时关闭操作提示信息
-    function AutoCloseInfo() {
-        var success = document.getElementById('success');
-        var failure = document.getElementById('failure');
-
-        if (success != null || failure != null) {
-            setTimeout("success.style.display='none';", 3000);
-        }
-    }
-
-    function VerifySave() {
-
-        var titleInput = document.getElementById('titleInput');
-        var content = CKEDITOR.instances.contentInput.getData();
-        var typeIdInput = document.getElementById('typeIdInput');
-        var error = document.getElementById('error');
-
-        var title = trim(titleInput.value);
-
-        if (title.length == 0) {
-            error.innerHTML = '标题不能为空';
-            return false;
-        }
-        if (content.length == 0) {
-            error.innerHTML = '内容不能为空';
-            return false;
-        }
-        if (typeIdInput.value == '-1') {
-            error.innerHTML = '文章类别不能为空';
-            return false;
-        }
-        return true;
-    }
-
-    function VerifyDelete(diaryIdParam) {
-        if (confirm("你确定删除这篇文章？")) {
-            window.location.href = '/ShowServlet?action=delete&diaryIdParam=' + diaryIdParam;
-        }
-    }
-
-    AutoCloseInfo();
-
-    function init() {
-        var testEditor = editormd("my-editormd", {//注意1：这里的就是上面的DIV的id属性值
-            width: "100%",
-            height: 640,
-            /*            theme : "dark",
-             previewTheme : "dark",
-             editorTheme : "pastel-on-dark",*/
-            syncScrolling: "single",
-            path: "./js/editor.md/lib/",//注意2：你的路径
-            saveHTMLToTextarea: true,//注意3：这个配置，方便post提交表单
-            emoji: true,//emoji表情，默认关闭
-
-            /**上传图片相关配置如下*/
-            /*imageUpload: true,
-            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "http://192.168.0.100:18202" //注意你后端的上传图片服务地址
-            */
-        });
-//        testEditor.fullscreen();
-    }
-    init();
-
-</script>
