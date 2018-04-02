@@ -7,3 +7,11 @@
 ## Test: ##
 username: **Tiakon**<br>
 password: **123**<br>
+
+# Tiakon'sBlog 1.5 Version
+
+1. Change text editor ckeditor to editor.md
+2. Support the Makedown syntax in the article to be displayed as HTML
+
+3. Fixed some other bugs
+

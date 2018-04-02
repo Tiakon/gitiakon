@@ -17,12 +17,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
-<% System.out.println("**************diaryShow.jsp"); %>
+<% System.out.println("**************diaryShow.jsp");%>
 <div class="data-list">
     <div class="data-list-title">
         <c:choose>
             <c:when test="${diary.diaryId!=null}">
-                <img src="<%=homePath%>/picture/mainTemp/data_type_edit_icon.png"/>
+                <img src="<%=homePath%>/picture/mainTemp/diary_type_edit_icon.png"/>
                 修改文章
             </c:when>
             <c:otherwise>
@@ -40,14 +40,19 @@
                        placeholder="请添加标题">
             </div>
 
-            <%--<div class="data-content">
+            <%--
+            <div class="data-content">
                 <textarea id="contentInput" name="contentInput" class="ckeditor">${diary.content}</textarea>
-            </div>--%>
+            </div>
+            --%>
 
             <div id="my-editormd">
-                <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
-                <!-- 注意：name属性的值-->
-                <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
+                <textarea id="my-editormd-markdown-doc" class="editormd-markdown-textarea"
+                          name="contentInput" style="display:none;" >${diary.content}</textarea>
+                <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+                <!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->
+                <textarea id="my-editormd-html-code" class="editormd-html-textarea"
+                          name="my-editormd-html-code" style="display:none;">${diary.content}</textarea>
             </div>
 
             <div class="data-type">
