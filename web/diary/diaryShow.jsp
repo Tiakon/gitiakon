@@ -1,18 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/18
-  Time: 21:02
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/10
-  Time: 10:44
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -24,7 +9,7 @@
         阅读文章
     </div>
     <div>
-        <div class="data-title">
+        <%--<div class="data-title">
             <h2>${diary.title}</h2>
         </div>
         <div class="data-info">
@@ -32,10 +17,17 @@
             <fmt:formatDate value="${diary.release_date}" type="date"
                             pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
             &nbsp;&nbsp;<span class="glyphicon glyphicon-tag"></span>&nbsp;${diary.typeName}
-        </div>
-        <div class="data-content">
+        </div>--%>
+
+        <%--<div class="data-content">
             ${diary.content}
+        </div>--%>
+
+        <div id="my-editormd-view">
+                <textarea id="append-editormd" style="display:none;">${diary.content}</textarea>
         </div>
+
+
         <div class="data-action">
             <button type="button" class="btn btn-primary"
                     onclick="javascript:window.location.href='/ShowServlet?action=update&diaryIdParam=${diary.diaryId}'">
@@ -48,5 +40,4 @@
             </button>
         </div>
     </div>
-
 </div>
