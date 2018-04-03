@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gitiakon-parent</artifactId>
+        <groupId>cn.tiakon.gitiakon</groupId>
+        <version>2.0-SNAPSHOT</version>
+        <relativePath>../gitiakon-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>gitiakon-manager</artifactId>
+    <packaging>jar</packaging>
+
+    <name>gitiakon-manager</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!--用来聚合运行Maven项目，指定多个模块一起编译-->
+    <modules>
+        <module>gitiakon-manager-pojo</module>
+        <module>gitiakon-manager-mapper</module>
+        <module>gitiakon-manager-service</module>
+        <module>gitiakon-manager-web</module>
+    </modules>
+
+</project>
