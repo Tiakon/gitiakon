@@ -15,7 +15,7 @@ Gitiakon 2.0
 
 _2018/4/3  10:21:55_
 
-# Tiakon'sBlog 1.5
+# Tiakon's Blog 1.5
 
 1. 更改文本编辑器 ckeditor 为 editor.md
 2. 支持文章中的Makedown语法以HTML形式显示
@@ -23,7 +23,7 @@ _2018/4/3  10:21:55_
 
 _2017/11/24  1:04_
 
-# Tiakon'sBlog 1.0
+# Tiakon's Blog 1.0
 
 1. 用户登录
 2. 用户信息显示，修改，头部上传
