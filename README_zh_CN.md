@@ -1,6 +1,6 @@
 Gitiakon 2.0
 ========
-<p align="center"> <a href="https://github.com/Tiakon/gitiakon/blob/gitiakon/README.md"><strong>English</strong></a> | <a href="https://github.com/Tiakon/gitiakon/blob/gitiakon/README-CN.md"><strong>中文</strong></a> </p>
+<p align="center"> <a href="https://github.com/Tiakon/gitiakon/blob/gitiakon/README.md"><strong>English</strong></a> | <a href="https://github.com/Tiakon/gitiakon/blob/gitiakon/README_zh_CN.md"><strong>中文</strong></a> </p>
 **注意**
 
 1. Tiakon's Blog 更名为 Gitiakon
