@@ -1,0 +1,350 @@
+
+body {
+    /*background-color: #FAFBFC;*/
+    font-family: "Microsoft YaHei";
+    background: url("/picture/bg.gif") repeat;
+
+}
+
+.logo-style {
+    color: #ffffff;
+}
+
+.tags-box {
+    border: 1px solid #E5E5E5;
+    padding: 10px;
+    background-color: #FDFDFD;
+    margin-top: 15px;
+}
+
+.tags-box .tags-title {
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.tags-box .tags-content {
+
+}
+
+.tags-box .tags-content > ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.tags-box .tags-content > ul > li {
+    display: inline-block;
+}
+
+.tags-box .tags-content > ul > li > a {
+    display: inline-block;
+    margin-top: 10px;
+    border: 1px dashed #bbb;
+    border-radius: 3px;
+    padding: 5px 5px;
+
+    color: #777;
+    background: #f1f1f1;
+    text-decoration: none;
+}
+
+.tags-box .tags-content > ul > li > a:hover {
+    display: inline-block;
+    margin-top: 10px;
+    border: 1px dashed #bbb;
+    border-radius: 3px;
+    padding: 5px 5px;
+
+    color: #fff;
+    background: #337ab7;
+    text-decoration: none;
+}
+
+.tags-box .tags-content > ul > li > a .badge {
+    display: inline-block;
+    padding: 1px 5px 2px;
+    margin-top: -3px;
+    margin-left: 5px;
+    color: #f1f1f1;
+    background-color: #777;
+}
+
+.tags-box .tags-content > ul > li > a:hover .badge {
+    display: inline-block;
+    padding: 1px 5px 2px;
+    margin-top: -3px;
+    margin-left: 5px;
+    color: #337ab7;
+    background-color: #fff;
+}
+
+.article-box {
+    border: 1px solid #E5E5E5;
+    padding: 10px;
+    background-color: #FDFDFD;
+    margin-top: 15px;
+}
+
+.article-box-title {
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.article-box .article-box-content {
+    padding: 5px;
+}
+
+.article-box .article-box-content > table {
+    margin-top: 15px;
+}
+
+.data-list {
+    border: 1px solid #E5E5E5;
+    padding: 10px;
+    background-color: #FDFDFD;
+    margin-top: 15px;
+}
+
+.data-list .data-list-title {
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.data-list .data-list-title img {
+    vertical-align: top;
+}
+
+.data-list .data-datas {
+    padding: 5px;
+}
+
+.data-list .data-datas ul {
+    list-style-type: none;
+}
+
+.data-list .data-datas ul li {
+    margin-top: 15px;
+}
+
+.data-list .datas ul li span {
+    font-size: 18px;
+}
+
+.data-list .data-datas-content {
+    margin: 10px auto 10px;
+}
+
+.data-list .data-datas-content > ul {
+    list-style: none;
+}
+
+.data-list .data-datas-content > ul > li {
+    margin-bottom: 10px;
+}
+
+.data-list .data-title {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.data-list .data-info {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #999;
+}
+
+.data-list .data-content {
+    font-size: 16px;
+    color: #505050;
+    line-height: 1.75em;
+}
+
+.data-list .data-content img {
+    text-align: center;
+}
+
+.data-list .data-action {
+    text-align: center;
+}
+
+.data-list .data-type select {
+    height: 30px;
+    width: 150px;
+    margin: 10px 0;
+}
+
+.data-list .data-type option {
+    display: inline-block;
+    height: 60px;
+    font-size: 15px;
+    padding: 10px 0px 10px;
+}
+
+.user-content {
+    text-align: center;
+    width: 80%;
+    margin: 40px auto 10px;
+}
+
+.user-content > img {
+    margin: 0px;
+    padding: 0px;
+}
+
+.user-content .user-nickName {
+    text-align: left;
+    margin: 10px 5%;
+    font-size: 20px;
+    color: #666;
+}
+
+.user-content .user-mood {
+    text-align: left;
+    margin: 0px 5%;
+    font-size: 12px;
+    color: #6a737d;
+}
+
+.mobile-menu-area {
+
+}
+
+.searchInput {
+
+}
+
+.diayTypeError {
+    display: none;
+    margin-bottom: 5px;
+}
+
+.user-error {
+    display: none;
+}
+
+.container-fluid-mod-1 {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+.container-fluid-mod-2 {
+    margin-top: 80px;
+}
+
+.container-fluid-mod-3 {
+    margin-top: 25px;
+}
+
+.row-mod {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.caret-mod {
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    border: 10px solid rgba(255, 0, 0, 0);
+    border-top-width: 0px;
+    border-bottom-color: #ffffff;
+}
+
+activate {
+    color: aliceblue;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -8px;
+    margin-left: -32px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.navbar-static-bottom {
+    height: 60px;
+    z-index: 1000;
+    margin-top: 50px;
+    background-color: #f1f1f1;
+    padding-top: 20px;
+}
+
+/*
+    本系统采用两套显示方案，当设备大于992px和小于992px。
+*/
+
+@media screen and (max-width: 992px) {
+    .navbar-title {
+        display: inline-block;
+        color: #9d9d9d;
+        font-size: 18px;
+        line-height: 20px;
+        margin: 20px auto 10px;
+    }
+
+    .navbar-form {
+        width: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-right: 0;
+        margin-left: 0;
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
+
+    .nav > li > a {
+        color: #505050;
+        margin-right: 0;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .nav > li > a:hover {
+        font-weight: bolder;
+        color: #337ab7;
+        background-color: #F5F5F5;
+    }
+
+    .panel-heading {
+        height: 45px;
+    }
+
+    .navbar-static-bottom {
+        height: 120px;
+        z-index: 1000;
+        margin-top: 50px;
+        background-color: #f1f1f1;
+        padding-top: 40px;
+        text-align: center;
+    }
+
+    .user-content .user-nickName {
+        text-align: center;
+        font-size: 20px;
+        color: #666;
+    }
+
+    .user-content .user-mood {
+        text-align: center;
+        font-size: 12px;
+        color: #6a737d;
+    }
+
+}
+
