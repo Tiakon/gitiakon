@@ -1,2 +1,2 @@
-# Gittiakon
+# Gitiakon
 Personal blog backend.
