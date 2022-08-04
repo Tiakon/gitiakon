@@ -1,18 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/10
-  Time: 10:44
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
 <% System.out.println("**************diaryList.jsp"); %>
 <div class="article-box">
     <div class="article-box-title">
-        <%--<img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>--%>
+        <%--<img src="/picture/mainTemp/list_icon.png"/>--%>
         <span class="glyphicon glyphicon-th-list"></span>
         文章列表
     </div>
@@ -25,7 +18,7 @@
                                         pattern="yyyy-MM-dd"></fmt:formatDate>
                     </td>
                     <td>
-                        <a href="/ShowServlet?action=show&diaryIdParam=${diary.diaryId}">${diary.title}</a>
+                        <a href="${pageContext.request.contextPath}/ShowServlet?action=show&diaryIdParam=${diary.diaryId}">${diary.title}</a>
                     </td>
                 </tr>
             </c:forEach>

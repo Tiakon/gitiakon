@@ -7,12 +7,13 @@ import cn.tiakon.service.DiaryService;
 import cn.tiakon.service.DiaryTypeService;
 import cn.tiakon.service.impl.DiaryServiceImpl;
 import cn.tiakon.service.impl.DiaryTypeServiceImpl;
-import cn.tiakon.utils.PageUtil;
+import cn.tiakon.utils.PagingUtil;
 import cn.tiakon.utils.PropertiesUtil;
 import cn.tiakon.utils.StringUtil;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,9 +21,13 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Hoictas on 2017/8/10.
+ * @author tiankai.me@gmail.com on 2022/8/3 19:05.
  */
-public class MainServlet extends HttpServlet {
+public class MainServlet extends BaseServlet {
+
+    public MainServlet() {
+        LOGGER = LogManager.getLogger(MainServlet.class.getName());
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,9 +35,9 @@ public class MainServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
-            System.out.println("**************MainServlet.java");
+            LOGGER.info(">> doGet...");
 
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
@@ -44,11 +49,6 @@ public class MainServlet extends HttpServlet {
             String diaryDateParam = request.getParameter("diaryDateParam");
             String searchAll = request.getParameter("flag");
             String search = request.getParameter("search");
-
-            /*System.out.println("diaryTypeIDParam:" + diaryTypeIDParam);
-            System.out.println("diaryDateParam:" + diaryDateParam);
-            System.out.println("searchAll:" + searchAll);
-            System.out.println("search:" + search);*/
 
             DiaryService diaryService = new DiaryServiceImpl();
             DiaryTypeService diaryTypeService = new DiaryTypeServiceImpl();
@@ -63,14 +63,14 @@ public class MainServlet extends HttpServlet {
                 session.setAttribute("search", search);
             } else {
 
-                if (StringUtil.isEmpty(search)) {
+                if (StringUtils.isEmpty(search)) {
                     Object searchObject = session.getAttribute("search");
                     if (searchObject != null) {
                         diaryParam.setTitle((String) searchObject);
                     }
                 }
 
-                if (StringUtil.isNotEmpty(diaryTypeIDParam)) {
+                if (StringUtils.isNotEmpty(diaryTypeIDParam)) {
                     diaryParam.setTypeId(Integer.parseInt(diaryTypeIDParam));
                     session.setAttribute("diaryTypeIDParam", diaryTypeIDParam);
                     session.removeAttribute("diaryDateParam");
@@ -83,13 +83,13 @@ public class MainServlet extends HttpServlet {
                     }
                 }
 
-                if (StringUtil.isNotEmpty(diaryDateParam)) {
+                if (StringUtils.isNotEmpty(diaryDateParam)) {
                     diaryParam.setRelease_dateStr(diaryDateParam);
                     session.setAttribute("diaryDateParam", diaryDateParam);
                     session.removeAttribute("diaryTypeIDParam");
                     session.removeAttribute("search");
                 }
-                if (StringUtil.isEmpty(diaryDateParam)) {
+                if (StringUtils.isEmpty(diaryDateParam)) {
                     Object diaryDateParamObject = session.getAttribute("diaryDateParam");
                     if (diaryDateParamObject != null) {
                         diaryParam.setRelease_dateStr((String) diaryDateParamObject);
@@ -105,7 +105,7 @@ public class MainServlet extends HttpServlet {
             String pageSize = PropertiesUtil.getValue("pageSize");
             PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(pageSize));
 
-            String pageCode = PageUtil.getPagation("MainServlet", totalNumber, pageBean.getPage(), pageBean.getPageSize());
+            String pageCode = PagingUtil.getPageInfo("MainServlet", totalNumber, pageBean.getPage(), pageBean.getPageSize());
             //查询所有记录数
             List<Diary> diaryList = diaryService.diaryList(pageBean, diaryParam);
             //查询所有的文章类别

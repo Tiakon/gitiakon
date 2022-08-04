@@ -1,23 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/8
-  Time: 11:40
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="cn.tiakon.entity.User,org.slf4j.Logger,org.slf4j.LoggerFactory" %>
-<%@include file="publicVariables.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="cn.tiakon.entity.User" %>
+<%@ page import="org.apache.logging.log4j.Logger" %>
+<%@ page import="org.apache.logging.log4j.LogManager" %>
+<%@ page import="cn.tiakon.servlet.LoginServlet" %>
+<%@ include file="publicVariables.jsp" %>
 <%
-    Logger logger = LoggerFactory.getLogger("login.jsp");
-
-    logger.info(">> login.jsp...");
-
+    Logger LOGGER = LogManager.getLogger(LoginServlet.class.getName());
+    LOGGER.info(">> login.jsp...");
     //检查客户端是否有cookie信息，有则显示在文本框中
     if (request.getAttribute("user") == null) {
         String userName = null;
         String password = null;
-
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
@@ -50,17 +44,17 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>Tiakon's Blog</title>
     <!-- Bootstrap -->
-    <link href="<%=homePath%>/picture/favicon.ico" rel="icon">
-    <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="<%=homePath%>/css/login.css" rel="stylesheet" type="text/css">
-    <link href="<%=homePath%>/css/checked.min.css" rel='stylesheet' type='text/css'/>
-    <script src="<%=homePath%>/js/jquery-3.1.0.min.js" type="text/javascript"></script>
-    <script src="<%=homePath%>/js/bootstrap.js" type="text/javascript"></script>
-    <script src="<%=homePath%>/js/utils.js" type="text/javascript"></script>
+    <link href="${pageContext.request.contextPath}/picture/favicon.ico" rel="icon">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/checked.min.css" rel='stylesheet' type='text/css'/>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/utils.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="container-fluid">
-    <form action="<%=homePath%>/LoginServlet" onsubmit="javascript:return VerifyLogin();" class="form-signin"
+    <form action="${pageContext.request.contextPath}/LoginServlet" onsubmit="return VerifyLogin();" class="form-signin"
           method="post" role="form">
         <h2 class="form-signin-heading">Tiakon博客系统</h2>
 
@@ -85,7 +79,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
     </form>
 </div>
-<script src="<%=homePath%>/js/login.js" type="text/javascript"></script>
+<script src="/js/login.js" type="text/javascript"></script>
 </body>
 </html>
 

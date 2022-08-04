@@ -13,7 +13,7 @@
 <% int index = 0;%>
 <div class="data-list">
     <div class="data-list-title">
-        <img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>
+        <img src="/picture/mainTemp/list_icon.png"/>
         标签列表
         <button type="button" style="margin-top: -8px;" class="btn btn-info btn-sm pull-right"
                 data-toggle="modal" data-target=".bs-example-modal-lg">

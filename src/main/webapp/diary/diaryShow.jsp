@@ -5,7 +5,7 @@
 <% System.out.println("**************diaryShow.jsp"); %>
 <div class="data-list">
     <div class="data-list-title">
-        <img src="<%=homePath%>/picture/mainTemp/diary_show_icon.png"/>
+        <img src="${pageContext.request.contextPath}/picture/mainTemp/diary_show_icon.png"/>
         阅读文章
     </div>
     <div>

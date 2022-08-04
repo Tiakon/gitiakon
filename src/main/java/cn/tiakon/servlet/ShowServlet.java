@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by Hoictas on 2017/8/18.
+ *
+ * @author tiankai.me@gmail.com on 2022/8/3 19:05.
  */
-
-public class ShowServlet extends HttpServlet {
+public class ShowServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -96,7 +96,6 @@ public class ShowServlet extends HttpServlet {
             if (StringUtil.isNotEmpty(diaryIdInput)) {
                 diaryInput.setDiaryId(Integer.parseInt(diaryIdInput));
                 lineNumber = diaryService.diaryUpdate(diaryInput);
-
             } else {
                 lineNumber = diaryService.diaryAdd(diaryInput);
             }
@@ -107,20 +106,16 @@ public class ShowServlet extends HttpServlet {
             } else {
                 request.getRequestDispatcher("/MainServlet").forward(request, response);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     protected void diaryDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String diaryIdParam = request.getParameter("diaryIdParam");
         DiaryService diaryService = new DiaryServiceImpl();
-
         try {
             int lineNumber = diaryService.diaryDelete(diaryIdParam);
-
             if (lineNumber > 0) {
                 System.out.println("删除成功！");
                 request.getRequestDispatcher("/MainServlet").forward(request, response);
@@ -129,11 +124,9 @@ public class ShowServlet extends HttpServlet {
                 System.out.println("删除失败！");
                 return;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 
 }

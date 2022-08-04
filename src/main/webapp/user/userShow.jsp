@@ -1,18 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/10
-  Time: 10:44
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
 <% System.out.println("**************userShow.jsp"); %>
 <div class="data-list">
     <div class="data-list-title">
-        <%--<img src="<%=homePath%>/picture/mainTemp/user_edit_icon.png"/>--%>
+        <%--<img src="/picture/mainTemp/user_edit_icon.png"/>--%>
         <sapn class="glyphicon glyphicon-edit"></sapn>
         用户信息
     </div>
@@ -49,15 +42,15 @@
 </div>
 <script type="text/javascript">
     function VerifyFormUpdate() {
-        var nickNameInput = document.getElementById('nickNameInput');
-        var moodTextArea = document.getElementById('moodTextArea');
-        var nickNameInputTrim = trim(nickNameInput.value);
-        var moodTextAreaTrim = trim(moodTextArea.value);
+        const nickNameInput = document.getElementById('nickNameInput');
+        const moodTextArea = document.getElementById('moodTextArea');
+        const nickNameInputTrim = trim(nickNameInput.value);
+        const moodTextAreaTrim = trim(moodTextArea.value);
 
-        if (nickNameInputTrim.length == 0 || moodTextAreaTrim == 0) {
-            var userError = document.getElementById('userError');
+        if (nickNameInputTrim.length === 0 || moodTextAreaTrim === 0) {
+            const userError = document.getElementById('userError');
             userError.style.display = "block";
-            setTimeout("userError.style.display = 'none';", 3000);
+            setTimeout(`userError.style.display = 'none';`, 3000);
             return false;
         }
         return true;
