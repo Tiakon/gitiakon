@@ -23,6 +23,13 @@ public class LoginServlet extends BaseServlet {
 
     public LoginServlet() {
         LOGGER = LogManager.getLogger(LoginServlet.class.getName());
+        LOGGER.info("> LoginServlet()");
+    }
+
+    @Override
+    public void init() throws ServletException {
+        LOGGER.info("> init()");
+        super.init();
     }
 
     @Override
