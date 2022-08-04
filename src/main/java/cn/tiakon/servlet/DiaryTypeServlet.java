@@ -14,9 +14,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by Hoictas on 2017/8/20.
+ * @author tiankai.me@gmail.com on 2022/8/3 19:05.
  */
-public class DiaryTypeServlet extends HttpServlet {
+public class DiaryTypeServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

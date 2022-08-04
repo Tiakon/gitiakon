@@ -1,16 +1,18 @@
 package cn.tiakon.utils;
 
-public class PageUtil {
+/**
+ * 分页工具
+ *
+ * @author tiankai.me@gmail.com on 2022/8/3 19:17.
+ */
+public class PagingUtil {
     /**
-     * 方法名: getPagation
-     * 参数名: [请求地址： targetUrl]
-     * 参数名: [总记录数: totalNum]
-     * 参数名: [第几页: currentPage]
-     * 参数名: [每页记录数: pageSize]
-     * 返回类型:java.lang.String
+     * @param targetUrl   请求地址
+     * @param totalNum    总记录数
+     * @param currentPage 当前页数
+     * @param pageSize    每页显示条数
      **/
-    public static String getPagation(String targetUrl, int totalNum, int currentPage, int pageSize) {
-
+    public static String getPageInfo(String targetUrl, int totalNum, int currentPage, int pageSize) {
         int totalPage = totalNum % pageSize == 0 ? totalNum / pageSize : totalNum / pageSize + 1;
         StringBuffer pageCode = new StringBuffer();
         pageCode.append("<li><a href='" + targetUrl + "?page=1'>首页</a></li>");
