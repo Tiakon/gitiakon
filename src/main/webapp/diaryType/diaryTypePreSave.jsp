@@ -1,19 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/18
-  Time: 21:02
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/10
-  Time: 10:44
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
@@ -22,11 +8,11 @@
     <div class="data-list-title">
         <c:choose>
             <c:when test="${diary.diaryId!=null}">
-                <img src="<%=homePath%>/picture/mainTemp/diary_type_edit_icon.png"/>
+                <img src="/picture/mainTemp/diary_type_edit_icon.png"/>
                 修改文章
             </c:when>
             <c:otherwise>
-                <img src="<%=homePath%>/picture/mainTemp/diary_add_icon.png"/>
+                <img src="/picture/mainTemp/diary_add_icon.png"/>
                 写文章
             </c:otherwise>
         </c:choose>

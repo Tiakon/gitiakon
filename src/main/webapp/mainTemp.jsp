@@ -1,14 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hoictas
-  Date: 2017/8/8
-  Time: 23:43
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="publicVariables.jsp" %>
 <%System.out.println("**************mainTemp.jsp");%>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -19,21 +13,17 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="Tiakon">
-    <link rel="icon" href="<%=homePath%>/picture/favicon.ico">
-    <title>Taikon's Blog</title>
-    <!-- Bootstrap core CSS -->
-    <link href="<%=homePath%>/css/bootstrap.css" rel="stylesheet">
-    <!-- Blog core CSS -->
-    <link href="<%=homePath%>/css/blog.css" rel="stylesheet">
-    <!--jquery-->
-    <script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
-    <!--bootstrap-->
-    <script src="<%=homePath%>/js/bootstrap.min.js"></script>
-    <!--Js Tool File-->
-    <script src="<%=homePath%>/js/utils.js"></script>
+    <link rel="icon" href="/picture/favicon.ico">
+    <title>Tiakon's Blog</title>
+    <link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/utils.js"></script>
     <!--editor.md plugins -->
-    <link href="<%=homePath%>/js/editor.md/css/editormd.css" rel="stylesheet" type="text/css"/>
-    <link href="<%=homePath%>/js/editor.md/css/editormd.preview.css" rel="stylesheet" type="text/css"/>
+    <link href="${pageContext.request.contextPath}/js/editor.md/css/editormd.css" rel="stylesheet" type="text/css"/>
+    <link href="${pageContext.request.contextPath}/js/editor.md/css/editormd.preview.css" rel="stylesheet"
+          type="text/css"/>
 </head>
 <body>
 
@@ -206,11 +196,12 @@
             <%--个人信息展示板--%>
             <div class="data-list">
                 <%--<div class="data-list-title">--%>
-                <%--<img src="<%=homePath%>/picture/mainTemp/user_icon.png"/>--%>
+                <%--<img src="/picture/mainTemp/user_icon.png"/>--%>
                 <%--<sapn class="glyphicon glyphicon-user"></sapn>&nbsp;个人中心--%>
                 <%--</div>--%>
                 <div class="user-content">
-                    <img class="img-rounded" style="width: 100%;" src="${currentUser.imageName}" alt="${currentUser.nickName}的头像"/>
+                    <img class="img-rounded" style="width: 100%;" src="${currentUser.imageName}"
+                         alt="${currentUser.nickName}的头像"/>
                     <div class="user-nickName">${currentUser.nickName}</div>
                     <div class="user-mood">${currentUser.mood}</div>
                 </div>
@@ -218,14 +209,14 @@
             <%--按照日期查看文章--%>
             <div class="data-list">
                 <div class="data-list-title">
-                    <%--<img src="<%=homePath%>/picture/mainTemp/list_icon.png"/>--%>
+                    <%--<img src="/picture/mainTemp/list_icon.png"/>--%>
                     <span class="glyphicon glyphicon-calendar"></span>&nbsp;时间列表
                 </div>
                 <div class="data-datas-content">
                     <ul>
                         <c:forEach var="diaryDate" items="${diaryDateList}">
                             <li>
-                                <a href="/MainServlet?diaryDateParam=${diaryDate.release_dateStr}"><span>${diaryDate.release_dateStr}</span>(${diaryDate.diaryDateCount})</a>
+                                <a href="${pageContext.request.contextPath}/MainServlet?diaryDateParam=${diaryDate.release_dateStr}"><span>${diaryDate.release_dateStr}</span>(${diaryDate.diaryDateCount})</a>
                             </li>
                         </c:forEach>
                     </ul>
@@ -234,14 +225,14 @@
             <%--按照标签查看文章--%>
             <div class="tags-box">
                 <div class="tags-title">
-                    <%--<img src="<%=homePath%>/picture/mainTemp/byType_icon.png"/>--%>
+                    <%--<img src="/picture/mainTemp/byType_icon.png"/>--%>
                     <sapn class="glyphicon glyphicon-tags"></sapn>&nbsp;便签云
                 </div>
                 <div class="tags-content">
                     <ul>
                         <c:forEach var="diaryType" items="${diaryTypeCountList}">
                             <li>
-                                <a href="/MainServlet?diaryTypeIDParam=${diaryType.diaryTypeID}">${diaryType.typeName}<span
+                                <a href="${pageContext.request.contextPath}/MainServlet?diaryTypeIDParam=${diaryType.diaryTypeID}">${diaryType.typeName}<span
                                         class="badge">${diaryType.diaryTypeCount}</span></a>
                             </li>
                         </c:forEach>
@@ -265,17 +256,16 @@
     </div>
 </div>
 
-<script src="<%=homePath%>/js/jquery-3.1.0.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/lib/marked.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/lib/prettify.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/lib/raphael.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/lib/underscore.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/lib/sequence-diagram.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/lib/flowchart.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/lib/jquery.flowchart.min.js"></script>
-<script src="<%=homePath%>/js/editor.md/js/editormd.js"></script>
-
-<script src="<%=homePath%>/js/mainTemp.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/lib/marked.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/lib/prettify.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/lib/raphael.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/lib/underscore.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/lib/sequence-diagram.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/lib/flowchart.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/lib/jquery.flowchart.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor.md/js/editormd.js"></script>
+<script src="${pageContext.request.contextPath}/js/mainTemp.js" type="text/javascript"></script>
 
 </body>
 </html>
