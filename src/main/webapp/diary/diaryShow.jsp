@@ -1,11 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
 <% System.out.println("**************diaryShow.jsp"); %>
 <div class="data-list">
     <div class="data-list-title">
-        <img src="${pageContext.request.contextPath}/picture/mainTemp/diary_show_icon.png"/>
+        <img src="/picture/mainTemp/diary_show_icon.png" />
         阅读文章
     </div>
     <div>
