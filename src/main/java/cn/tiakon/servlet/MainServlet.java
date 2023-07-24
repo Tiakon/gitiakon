@@ -120,7 +120,6 @@ public class MainServlet extends BaseServlet {
             request.setAttribute("diaryList", diaryList);
             request.setAttribute("mainPage", "/diary/diaryList.jsp");
             request.getRequestDispatcher("mainTemp.jsp").forward(request, response);
-            return;
         } catch (Exception e) {
             e.printStackTrace();
         }

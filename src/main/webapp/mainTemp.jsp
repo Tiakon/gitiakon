@@ -22,8 +22,7 @@
     <script src="${pageContext.request.contextPath}/js/utils.js"></script>
     <!--editor.md plugins -->
     <link href="${pageContext.request.contextPath}/js/editor.md/css/editormd.css" rel="stylesheet" type="text/css"/>
-    <link href="${pageContext.request.contextPath}/js/editor.md/css/editormd.preview.css" rel="stylesheet"
-          type="text/css"/>
+    <link href="${pageContext.request.contextPath}/js/editor.md/css/editormd.preview.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
@@ -104,7 +103,7 @@
 <%--当桌面像素小于992px时,导航栏处使用此显示方案--%>
 <div class="mobile-menu-area hidden-md hidden-lg">
     <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container-fluid  text-center">
+        <div class="container-fluid text-center">
             <div class="navbar-title">
                 <a href="#" class="logo-style">Tiakon's Blog</a>
             </div>

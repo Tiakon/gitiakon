@@ -280,7 +280,6 @@ activate {
 /*
     本系统采用两套显示方案，当设备大于992px和小于992px。
 */
-
 @media screen and (max-width: 992px) {
     .navbar-title {
         display: inline-block;

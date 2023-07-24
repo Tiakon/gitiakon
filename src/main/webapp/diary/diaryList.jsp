@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/publicVariables.jsp" %>
 <% System.out.println("**************diaryList.jsp"); %>
+<jsp:useBean id="pageCode" scope="request" type="java.lang.String"/>
+<jsp:useBean id="diaryList" scope="request" type="java.util.List"/>
 <div class="article-box">
     <div class="article-box-title">
         <%--<img src="/picture/mainTemp/list_icon.png"/>--%>
@@ -14,8 +16,7 @@
             <c:forEach var="diary" items="${diaryList}">
                 <tr>
                     <td style="width: 25%;">
-                        <fmt:formatDate value="${diary.release_date}" type="date"
-                                        pattern="yyyy-MM-dd"></fmt:formatDate>
+                        <fmt:formatDate value="${diary.release_date}" type="date" pattern="yyyy-MM-dd"></fmt:formatDate>
                     </td>
                     <td>
                         <a href="${pageContext.request.contextPath}/ShowServlet?action=show&diaryIdParam=${diary.diaryId}">${diary.title}</a>

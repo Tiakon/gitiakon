@@ -32,14 +32,13 @@ public class LoginFilter implements Filter {
             // 1.以下资源被请求时不拦截。
             // 2.用户成功登陆后不拦截
             // 2.1成功登陆后，直接访问mainTemp.jsp，由于mainPage为空，拦截jsp include的请求到指定页面（mainPageIsNull.jsp）
-            if (user == null && servletPath.indexOf("login.jsp") < 0
-                    && servletPath.indexOf(".css") < 0 && servletPath.indexOf("LoginServlet") < 0
-                    && servletPath.indexOf("utils.js") < 0 && servletPath.indexOf("bootstrap.js") < 0
-                    && servletPath.indexOf("jquery") < 0 && servletPath.indexOf("favicon.ico") < 0
-                    && servletPath.indexOf("mainPageIsNull.jsp") < 0) {
+            if (user == null && !servletPath.contains("login.jsp")
+                    && !servletPath.contains(".css") && !servletPath.contains("LoginServlet")
+                    && !servletPath.contains("utils.js") && !servletPath.contains("bootstrap.js")
+                    && !servletPath.contains("jquery") && !servletPath.contains("favicon.ico")
+                    && !servletPath.contains("mainPageIsNull.jsp")) {
                 LOGGER.info(">> 拦截请求:{}", servletPath);
                 response.sendRedirect("/login.jsp");
-                return;
             } else {
                 LOGGER.info(">> 登录状态:{}", user != null);
                 LOGGER.info(">> 放行请求: {}", servletPath);
